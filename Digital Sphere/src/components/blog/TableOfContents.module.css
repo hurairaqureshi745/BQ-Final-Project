@@ -1,0 +1,133 @@
+.toc {
+  background: rgba(17, 24, 39, 0.4);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 100px;
+}
+
+.desktopHeader {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: var(--space-xs);
+}
+
+.desktopHeader svg {
+  color: var(--color-secondary);
+  font-size: 1.2rem;
+}
+
+.desktopHeader h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.mobileHeader {
+  display: none;
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  color: var(--color-text);
+  cursor: pointer;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.headerLabel svg {
+  color: var(--color-secondary);
+}
+
+.chevron {
+  color: var(--color-text-muted);
+  font-size: 1.2rem;
+  transition: transform 0.3s ease;
+}
+
+.chevronRotated {
+  transform: rotate(180deg);
+  color: var(--color-secondary);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.item {
+  line-height: 1.4;
+}
+
+.subitem {
+  padding-left: var(--space-sm);
+}
+
+.link {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  display: inline-block;
+}
+
+.link:hover {
+  color: var(--color-text);
+  transform: translateX(2px);
+}
+
+.linkActive {
+  color: var(--color-secondary);
+  font-weight: 600;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transform: translateX(4px);
+}
+
+@media (max-width: 992px) {
+  .toc {
+    position: relative;
+    top: 0;
+    margin-bottom: var(--space-md);
+  }
+
+  .desktopHeader {
+    display: none;
+  }
+
+  .mobileHeader {
+    display: flex;
+  }
+
+  .list {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease, margin-top 0.3s ease;
+  }
+
+  .listOpen {
+    max-height: 500px;
+    opacity: 1;
+    margin-top: var(--space-sm);
+  }
+}

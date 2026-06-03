@@ -1,0 +1,503 @@
+.page {
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding-bottom: var(--space-3xl);
+}
+
+/* Background glows */
+.page::before {
+  content: "";
+  position: absolute;
+  top: 5%;
+  left: -15%;
+  width: 45vw;
+  height: 45vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.page::after {
+  content: "";
+  position: absolute;
+  bottom: 10%;
+  right: -15%;
+  width: 50vw;
+  height: 50vw;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.06) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+  position: relative;
+  z-index: 1;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+  padding: var(--space-3xl) 0 var(--space-xl);
+  text-align: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  margin-bottom: var(--space-2xl);
+  position: relative;
+}
+
+.heroContent {
+  max-width: 820px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-bottom: var(--space-sm);
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  border-radius: var(--radius-xl);
+  padding: 0.45rem 0.85rem;
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--color-secondary);
+  font-size: var(--fs-small);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 5vw, var(--fs-hero));
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+.hero h1 span {
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+}
+
+.heroDescription {
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 680px;
+}
+
+.lastUpdated {
+  margin-top: var(--space-sm);
+  font-size: var(--fs-small);
+  color: var(--color-secondary);
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Main Content Layout (Sidebar & Main Block)
+   ========================================================================== */
+.mainLayout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: var(--space-2xl);
+  align-items: start;
+}
+
+/* Sidebar Index */
+.sidebar {
+  position: sticky;
+  top: 100px; /* Offset for main navigation bar */
+  max-height: calc(100vh - 140px);
+  overflow-y: auto;
+  padding: var(--space-md) var(--space-sm) var(--space-md) 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Custom Scrollbar for Sidebar Navigation */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: var(--radius-xl);
+}
+
+.sidebarTitle {
+  font-size: var(--fs-small);
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  margin-bottom: var(--space-md);
+  padding-left: var(--space-sm);
+}
+
+.indexList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.indexLink {
+  display: block;
+  padding: 0.5rem var(--space-sm);
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  line-height: 1.3;
+}
+
+.indexLink:hover {
+  color: var(--color-secondary);
+  background: rgba(6, 182, 212, 0.05);
+  padding-left: var(--space-md);
+}
+
+.indexLinkActive {
+  color: var(--color-secondary);
+  background: rgba(6, 182, 212, 0.08);
+  border-left: 2px solid var(--color-secondary);
+  padding-left: var(--space-md);
+}
+
+/* Main Text Content */
+.contentBlock {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  max-width: 820px;
+}
+
+.legalSection {
+  scroll-margin-top: 120px; /* Ensures anchors land below fixed header */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: var(--space-xl);
+}
+
+.legalSection:last-of-type {
+  border-bottom: none;
+}
+
+.legalSection h2 {
+  font-size: var(--fs-h2);
+  font-weight: 800;
+  margin: 0 0 var(--space-md);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.legalSection h2::before {
+  content: "";
+  display: inline-block;
+  width: 4px;
+  height: 24px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+.legalSection p {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.legalSection p strong {
+  color: var(--color-text);
+}
+
+/* Custom Bullet List styling */
+.list {
+  margin: var(--space-md) 0 var(--space-lg);
+  padding-left: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.listItem {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.bullet {
+  color: var(--color-secondary);
+  font-size: 1.1rem;
+  line-height: 1.4;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+/* Glassmorphism callout panels */
+.calloutCard {
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background: linear-gradient(145deg, rgba(31, 41, 55, 0.35), rgba(17, 24, 39, 0.15));
+  backdrop-filter: blur(12px);
+  margin: var(--space-lg) 0;
+  box-shadow: var(--shadow-card);
+}
+
+.calloutCard h3 {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.calloutIcon {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.calloutCard p {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.6;
+}
+
+/* Contact methods in Privacy Policy */
+.contactGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+}
+
+.contactCard {
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: var(--radius-md);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(31, 41, 55, 0.25);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
+}
+
+.contactCard:hover {
+  border-color: rgba(6, 182, 212, 0.4);
+  background: rgba(6, 182, 212, 0.05);
+  transform: translateY(-2px);
+}
+
+.contactIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(6, 182, 212, 0.1);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+}
+
+.contactDetails h4 {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  font-weight: 600;
+}
+
+.contactDetails p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* ==========================================================================
+   Final CTA Section
+   ========================================================================== */
+.finalCta {
+  margin-top: var(--space-3xl);
+  padding: 0 var(--space-sm);
+}
+
+.ctaCard {
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-xl);
+  background:
+    radial-gradient(circle at top right, rgba(6, 182, 212, 0.1), transparent 350px),
+    radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.1), transparent 350px),
+    linear-gradient(135deg, rgba(31, 41, 55, 0.65), rgba(17, 24, 39, 0.45));
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  max-width: 860px;
+  margin-inline: auto;
+}
+
+.ctaCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(to right, var(--color-primary), var(--color-secondary));
+}
+
+.ctaCard h2 {
+  font-size: clamp(1.8rem, 4vw, var(--fs-h1));
+  font-weight: 800;
+  margin: 0 0 var(--space-sm);
+  color: var(--color-text);
+}
+
+.ctaCard p {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-inline: auto;
+  margin-bottom: var(--space-lg);
+}
+
+.ctaActions {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.primaryBtn,
+.secondaryBtn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-lg);
+  font-weight: 800;
+  text-decoration: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  border: none;
+}
+
+.primaryBtn {
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-primary);
+}
+
+.primaryBtn:hover {
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+  transform: translateY(-2px);
+}
+
+.secondaryBtn {
+  border: 1px solid var(--color-border);
+  background: rgba(17, 24, 39, 0.6);
+  color: var(--color-text);
+}
+
+.secondaryBtn:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  color: var(--color-secondary);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
+  transform: translateY(-2px);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .mainLayout {
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: var(--space-md);
+    margin-bottom: var(--space-lg);
+    max-height: none;
+    overflow-y: visible;
+  }
+  
+  .indexList {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--space-xs);
+  }
+  
+  .indexLink {
+    padding: 0.4rem 0.75rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    font-size: 0.85rem;
+  }
+
+  .indexLinkActive {
+    border-left: none;
+    border-bottom: 2px solid var(--color-secondary);
+    background: rgba(6, 182, 212, 0.08);
+  }
+  
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  
+  .hero {
+    padding: var(--space-2xl) 0 var(--space-lg);
+  }
+}

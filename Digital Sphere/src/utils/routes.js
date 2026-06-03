@@ -1,0 +1,16 @@
+export const ROUTES = {
+  home: '/',
+  about: '/about',
+  services: '/services',
+  blog: '/blog',
+  contact: '/contact',
+  webDevelopment: '/services/web-development',
+  uiUxDesign: '/services/ui-ux-design',
+  mobileApps: '/services/mobile-app-development',
+  digitalMarketing: '/services/digital-marketing',
+  cyberSecurity: '/services/cyber-security',
+  graphicDesign: '/services/graphic-design',
+  privacyPolicy: '/privacy-policy',
+  termsConditions: '/terms-conditions',
+  refundPolicy: '/refund-policy',
+}

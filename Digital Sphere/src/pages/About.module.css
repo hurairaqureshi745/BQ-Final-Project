@@ -1,0 +1,1095 @@
+.page {
+  color: var(--color-text);
+  background: var(--color-bg);
+  min-height: 100vh;
+}
+
+/* ==========================================================================
+   Hero Section
+   ========================================================================== */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: var(--space-2xl) var(--space-sm) var(--space-xl);
+  background:
+    radial-gradient(circle at 80% 20%, rgba(6, 182, 212, 0.15), transparent 32rem),
+    radial-gradient(circle at 15% 40%, rgba(124, 58, 237, 0.18), transparent 30rem);
+  text-align: center;
+}
+
+.heroContent {
+  max-width: 820px;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.badge {
+  display: inline-flex;
+  margin-bottom: var(--space-sm);
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  border-radius: var(--radius-xl);
+  padding: 0.45rem 0.85rem;
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--color-secondary);
+  font-size: var(--fs-small);
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, var(--fs-hero));
+  line-height: 1.05;
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.hero h1 span {
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+}
+
+.heroDescription {
+  margin-top: var(--space-md);
+  color: var(--color-text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 720px;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.primaryBtn a,
+.secondaryBtn a {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-lg);
+  font-weight: 800;
+  text-decoration: none;
+  transition: box-shadow 220ms ease, transform 220ms ease, color 220ms ease;
+}
+
+.primaryBtn a {
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-primary);
+}
+
+.primaryBtn a:hover {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.55);
+  transform: translateY(-2px);
+  color: var(--color-text);
+}
+
+.secondaryBtn a {
+  border: 1px solid var(--color-border);
+  background: rgba(17, 24, 39, 0.72);
+  color: var(--color-text);
+}
+
+.secondaryBtn a:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  color: var(--color-secondary);
+}
+
+/* ==========================================================================
+   Section Layouts
+   ========================================================================== */
+.section {
+  padding: var(--space-xl) var(--space-sm);
+  position: relative;
+}
+
+.sectionHeader {
+  max-width: 780px;
+  margin-bottom: var(--space-xl);
+}
+
+.sectionHeader h2 {
+  font-size: clamp(2rem, 4vw, var(--fs-h1));
+  font-weight: 800;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.sectionHeader p {
+  margin-top: var(--space-sm);
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+}
+
+/* ==========================================================================
+   Story Section
+   ========================================================================== */
+.storySection {
+  background:
+    radial-gradient(circle at 85% 50%, rgba(124, 58, 237, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.storyContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: flex-start;
+}
+
+.storyLeft h2 {
+  font-size: var(--fs-h1);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0 0 var(--space-md);
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+}
+
+.storyText {
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.storyText p {
+  margin-top: 0;
+  margin-bottom: var(--space-md);
+}
+
+.storyRight {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.storyQuote {
+  font-style: italic;
+  font-size: 1.2rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0 0 var(--space-sm);
+}
+
+.storyAuthor {
+  font-weight: 700;
+  color: var(--color-secondary);
+  font-size: var(--fs-small);
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   Founder Message Section
+   ========================================================================== */
+.founderSection {
+  background:
+    radial-gradient(circle at 15% 30%, rgba(6, 182, 212, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.founderContent {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.founderQuoteCard {
+  border: 1px solid rgba(139, 92, 246, 0.42);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.65), rgba(17, 24, 39, 0.35)),
+    rgba(17, 24, 39, 0.55);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(16px);
+  position: relative;
+}
+
+.founderQuoteText {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.5;
+  margin: 0;
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+}
+
+/* ==========================================================================
+   Mission & Vision
+   ========================================================================== */
+.missionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+.mvCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.4), rgba(17, 24, 39, 0.2)),
+    rgba(17, 24, 39, 0.32);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.mvCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+}
+
+.missionCard::before {
+  background: var(--color-primary);
+}
+
+.visionCard::before {
+  background: var(--color-secondary);
+}
+
+.mvCard:hover {
+  border-color: rgba(139, 92, 246, 0.45);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.15);
+  transform: translateY(-4px);
+}
+
+.mvCard h3 {
+  font-size: var(--fs-h2);
+  margin: 0 0 var(--space-sm);
+  font-weight: 800;
+  color: var(--color-text);
+}
+
+.mvCard p {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Our Philosophy
+   ========================================================================== */
+.philosophyGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.philosophyCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.philosophyCard:hover {
+  border-color: rgba(6, 182, 212, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(6, 182, 212, 0.22);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   Core Values
+   ========================================================================== */
+.valuesGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.valueCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.valueCard:hover {
+  border-color: rgba(139, 92, 246, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(124, 58, 237, 0.22);
+  transform: translateY(-4px);
+}
+
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-sm);
+  background: rgba(124, 58, 237, 0.15);
+  border: 1px solid rgba(124, 58, 237, 0.35);
+  color: var(--color-secondary);
+  font-size: var(--fs-h3);
+  margin-bottom: var(--space-md);
+  transition: background-color 240ms ease, border-color 240ms ease, color 240ms ease;
+  flex-shrink: 0;
+}
+
+.valueCard:hover .iconBox,
+.philosophyCard:hover .iconBox,
+.whyCard:hover .iconBox,
+.industryCard:hover .iconBox,
+.communityCard:hover .iconBox {
+  background: rgba(124, 58, 237, 0.25);
+  border-color: var(--color-primary-light);
+  color: var(--color-text);
+}
+
+.valueCard h3,
+.philosophyCard h3,
+.whyCard h3,
+.industryCard h3,
+.communityCard h3 {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-xs);
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.valueCard p,
+.philosophyCard p,
+.whyCard p,
+.industryCard p,
+.communityCard p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   How We Work / Process Step Lists
+   ========================================================================== */
+.howWeWorkGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.workStepCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, transform 240ms ease;
+}
+
+.workStepCard:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  transform: translateY(-4px);
+}
+
+.workStepNum {
+  font-size: var(--fs-small);
+  font-weight: 800;
+  color: var(--color-secondary);
+  display: inline-block;
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 0.25rem 0.65rem;
+  background: rgba(6, 182, 212, 0.08);
+  margin-bottom: var(--space-md);
+  letter-spacing: 0.05em;
+}
+
+.workStepCard h3 {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-xs);
+  font-weight: 700;
+}
+
+.workStepCard p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Journey Timeline & Future Roadmap
+   ========================================================================== */
+.timelineWrapper,
+.roadmapWrapper {
+  position: relative;
+  padding-block: var(--space-md);
+}
+
+.timelineLine,
+.roadmapLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.timelineLine {
+  background: linear-gradient(to bottom, var(--color-primary), var(--color-secondary));
+}
+
+.roadmapLine {
+  background: linear-gradient(to bottom, var(--color-secondary), var(--color-primary));
+}
+
+.timelineItem,
+.roadmapItem {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: var(--space-xl);
+  position: relative;
+}
+
+.timelineItem:last-child,
+.roadmapItem:last-child {
+  margin-bottom: 0;
+}
+
+.timelineItemLeft,
+.roadmapItemLeft {
+  flex-direction: row-reverse;
+}
+
+.timelineContent,
+.roadmapContent {
+  width: 45%;
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease;
+}
+
+.timelineItem:hover .timelineContent {
+  border-color: rgba(139, 92, 246, 0.72);
+  box-shadow: 0 0 25px rgba(124, 58, 237, 0.18);
+}
+
+.roadmapItem:hover .roadmapContent {
+  border-color: rgba(6, 182, 212, 0.72);
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.18);
+}
+
+.timelineDot,
+.roadmapDot {
+  position: absolute;
+  left: 50%;
+  top: 30px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--color-bg);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  transition: transform 240ms ease, border-color 240ms ease;
+}
+
+.timelineDot {
+  border: 4px solid var(--color-secondary);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.timelineItemLeft .timelineDot {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+}
+
+.roadmapDot {
+  border: 4px solid var(--color-primary);
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.5);
+}
+
+.roadmapItemLeft .roadmapDot {
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px rgba(6, 182, 212, 0.5);
+}
+
+.timelineItem:hover .timelineDot,
+.roadmapItem:hover .roadmapDot {
+  transform: translate(-50%, -50%) scale(1.3);
+  background: var(--color-text);
+}
+
+.timelineYear,
+.roadmapPhase {
+  display: inline-block;
+  margin-bottom: var(--space-xs);
+  font-weight: 800;
+  font-size: var(--fs-small);
+  letter-spacing: 0.05em;
+}
+
+.timelineYear {
+  color: var(--color-secondary);
+}
+
+.timelineItemLeft .timelineYear {
+  color: var(--color-primary-light);
+}
+
+.roadmapPhase {
+  color: var(--color-primary-light);
+}
+
+.roadmapItemLeft .roadmapPhase {
+  color: var(--color-secondary);
+}
+
+.timelineContent h3,
+.roadmapContent h3 {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-xs);
+  font-weight: 700;
+}
+
+.timelineContent p,
+.roadmapContent p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Why Choose Us Section
+   ========================================================================== */
+.whyChooseSection {
+  background:
+    radial-gradient(circle at 15% 75%, rgba(6, 182, 212, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.whyChooseGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.whyCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.whyCard:hover {
+  border-color: rgba(139, 92, 246, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(124, 58, 237, 0.22);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   Industry Focus Section
+   ========================================================================== */
+.industrySection {
+  background:
+    radial-gradient(circle at 85% 75%, rgba(124, 58, 237, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.industryGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.industryCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.industryCard:hover {
+  border-color: rgba(139, 92, 246, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(124, 58, 237, 0.22);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   Meet The Team
+   ========================================================================== */
+.teamGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.teamCard {
+  min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.62), rgba(17, 24, 39, 0.36)),
+    rgba(17, 24, 39, 0.52);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.teamCard:hover {
+  border-color: rgba(139, 92, 246, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 34px rgba(124, 58, 237, 0.25);
+  transform: translateY(-8px);
+}
+
+.avatar {
+  width: 86px;
+  height: 86px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(6, 182, 212, 0.38);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 30% 22%, rgba(248, 250, 252, 0.18), transparent 28%),
+    var(--gradient-primary);
+  color: var(--color-text);
+  font-size: var(--fs-h3);
+  font-weight: 900;
+  letter-spacing: 0.06em;
+  box-shadow:
+    0 0 22px rgba(124, 58, 237, 0.34),
+    0 0 30px rgba(6, 182, 212, 0.18);
+  transition: box-shadow 240ms ease, transform 240ms ease;
+}
+
+.teamCard:hover .avatar {
+  box-shadow:
+    0 0 30px rgba(124, 58, 237, 0.5),
+    0 0 44px rgba(6, 182, 212, 0.3);
+  transform: translateY(-2px);
+}
+
+.teamCard h3 {
+  margin: var(--space-md) 0 var(--space-xs);
+  color: var(--color-text);
+  font-size: var(--fs-h3);
+  line-height: 1.2;
+  font-weight: 800;
+}
+
+.role {
+  min-height: 52px;
+  margin: 0;
+  color: var(--color-secondary);
+  font-size: var(--fs-small);
+  font-weight: 800;
+  line-height: 1.5;
+}
+
+.bio {
+  margin: var(--space-sm) 0 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+}
+
+.socials {
+  display: flex;
+  gap: var(--space-xs);
+  margin-top: auto;
+  padding-top: var(--space-md);
+  list-style: none;
+  padding-left: 0;
+}
+
+.socials span {
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(39, 52, 73, 0.9);
+  border-radius: var(--radius-sm);
+  background: rgba(11, 15, 25, 0.42);
+  color: var(--color-text-muted);
+  transition: border-color 220ms ease, box-shadow 220ms ease, color 220ms ease;
+}
+
+.socials span:hover {
+  border-color: rgba(6, 182, 212, 0.62);
+  color: var(--color-secondary);
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.22);
+}
+
+/* ==========================================================================
+   Our Process & Step counters
+   ========================================================================== */
+.processSection {
+  background:
+    radial-gradient(circle at 80% 80%, rgba(124, 58, 237, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.processGrid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.processCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  position: relative;
+  transition: border-color 240ms ease, transform 240ms ease;
+}
+
+.processCard:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+  transform: translateY(-4px);
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  font-weight: 800;
+  font-size: var(--fs-small);
+  margin-bottom: var(--space-md);
+}
+
+.processCard h3 {
+  font-size: var(--fs-h3);
+  margin: 0 0 var(--space-xs);
+  font-weight: 700;
+}
+
+.processCard p {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Long-Term Vision
+   ========================================================================== */
+.visionSection {
+  background:
+    radial-gradient(circle at 15% 85%, rgba(124, 58, 237, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.visionContent {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+.visionQuote {
+  border-left: 3px solid var(--color-secondary);
+  padding-left: var(--space-md);
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--color-text);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ==========================================================================
+   Community Impact
+   ========================================================================== */
+.communitySection {
+  background:
+    radial-gradient(circle at 85% 15%, rgba(6, 182, 212, 0.08), transparent 28rem),
+    var(--color-bg);
+}
+
+.communityGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-md);
+  margin-top: var(--space-lg);
+}
+
+.communityCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  transition: border-color 240ms ease, box-shadow 240ms ease, transform 240ms ease;
+}
+
+.communityCard:hover {
+  border-color: rgba(6, 182, 212, 0.72);
+  box-shadow:
+    var(--shadow-card),
+    0 0 25px rgba(6, 182, 212, 0.22);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   Statistics
+   ========================================================================== */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-md);
+}
+
+.statCard {
+  border: 1px solid rgba(39, 52, 73, 0.86);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl) var(--space-lg);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.52), rgba(17, 24, 39, 0.26)),
+    rgba(17, 24, 39, 0.42);
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(16px);
+  text-align: center;
+  transition: border-color 240ms ease;
+}
+
+.statCard:hover {
+  border-color: rgba(6, 182, 212, 0.55);
+}
+
+.statValue {
+  display: block;
+  font-size: 3.5rem;
+  font-weight: 900;
+  line-height: 1;
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+  margin-bottom: var(--space-xs);
+}
+
+.statLabel {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   CTA Section
+   ========================================================================== */
+.ctaSection {
+  background:
+    radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.15), transparent 30rem),
+    var(--color-bg);
+}
+
+.ctaCard {
+  border: 1px solid rgba(139, 92, 246, 0.42);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl) var(--space-xl);
+  background:
+    linear-gradient(145deg, rgba(31, 41, 55, 0.74), rgba(17, 24, 39, 0.44)),
+    rgba(17, 24, 39, 0.64);
+  box-shadow:
+    var(--shadow-card),
+    0 0 35px rgba(124, 58, 237, 0.15);
+  backdrop-filter: blur(18px);
+  text-align: center;
+  max-width: 920px;
+  margin-inline: auto;
+}
+
+.ctaCard h2 {
+  font-size: clamp(2.2rem, 5vw, var(--fs-h1));
+  font-weight: 800;
+  margin: 0 0 var(--space-md);
+  line-height: 1.15;
+}
+
+.ctaCard p {
+  color: var(--color-text-muted);
+  font-size: 1.15rem;
+  line-height: 1.6;
+  max-width: 680px;
+  margin: 0 auto var(--space-lg);
+}
+
+.ctaActions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--space-sm);
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+@media (max-width: 940px) {
+  .storyContent,
+  .founderContent,
+  .visionContent {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+
+  .missionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .valuesGrid,
+  .philosophyGrid,
+  .whyChooseGrid,
+  .teamGrid,
+  .industryGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .processGrid,
+  .howWeWorkGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .communityGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .timelineLine,
+  .roadmapLine {
+    left: var(--space-lg);
+  }
+
+  .timelineDot,
+  .roadmapDot {
+    left: var(--space-lg);
+  }
+
+  .timelineContent,
+  .roadmapContent {
+    width: calc(100% - 3.5rem);
+    margin-left: auto;
+  }
+
+  .timelineItem,
+  .roadmapItem {
+    flex-direction: row !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .section {
+    padding: var(--space-lg) var(--space-sm);
+  }
+
+  .valuesGrid,
+  .philosophyGrid,
+  .whyChooseGrid,
+  .teamGrid,
+  .processGrid,
+  .howWeWorkGrid,
+  .communityGrid,
+  .industryGrid,
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ctaCard {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .heroActions,
+  .ctaActions {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+
+  .primaryBtn a,
+  .secondaryBtn a {
+    width: 100%;
+  }
+}

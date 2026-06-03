@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad-image-9.svg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#070a13" />
+    </linearGradient>
+    <linearGradient id="neonGrad-image-9.svg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#7c3aed" />
+    </linearGradient>
+    <radialGradient id="glow-image-9.svg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#0b0f19" stop-opacity="0" />
+    </radialGradient>
+    <filter id="blurFilter-image-9.svg" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="40" />
+    </filter>
+  </defs>
+
+  <rect width="1200" height="800" fill="url(#bgGrad-image-9.svg)" />
+  <circle cx="600" cy="400" r="500" fill="url(#glow-image-9.svg)" filter="url(#blurFilter-image-9.svg)" />
+
+  <!-- Grid lines -->
+  <g stroke="#273449" stroke-width="0.5" opacity="0.3">
+    <path d="M 0,100 L 1200,100 M 0,200 L 1200,200 M 0,300 L 1200,300 M 0,400 L 1200,400 M 0,500 L 1200,500 M 0,600 L 1200,600 M 0,700 L 1200,700" />
+    <path d="M 100,0 L 100,800 M 200,0 L 200,800 M 300,0 L 300,800 M 400,0 L 400,800 M 500,0 L 500,800 M 600,0 L 600,800 M 700,0 L 700,800 M 800,0 L 800,800 M 900,0 L 900,800 M 1000,0 L 1000,800 M 1100,0 L 1100,800" />
+  </g>
+
+  <!-- Abstract Tech Nodes -->
+  <g opacity="0.4">
+    <circle cx="200" cy="200" r="6" fill="#7c3aed" />
+    <line x1="200" y1="200" x2="350" y2="200" stroke="#7c3aed" stroke-width="2" />
+    <line x1="350" y1="200" x2="400" y2="250" stroke="#7c3aed" stroke-width="2" />
+    
+    <circle cx="1000" cy="600" r="6" fill="#10b981" />
+    <line x1="1000" y1="600" x2="850" y2="600" stroke="#10b981" stroke-width="2" />
+    <line x1="850" y1="600" x2="800" y2="550" stroke="#10b981" stroke-width="2" />
+  </g>
+
+  <!-- Card container -->
+  <g transform="translate(250, 200)">
+    <rect width="700" height="400" rx="20" fill="none" stroke="url(#neonGrad-image-9.svg)" stroke-width="1.5" opacity="0.8" />
+    <rect width="700" height="400" rx="20" fill="#111827" opacity="0.8" />
+
+    <circle cx="30" cy="30" r="6" fill="#06b6d4" />
+    <circle cx="60" cy="30" r="6" fill="#7c3aed" />
+    <circle cx="90" cy="30" r="6" fill="#1f2937" />
+
+    <text x="350" y="160" font-family="'Inter', sans-serif" font-size="14" fill="#7c3aed" font-weight="bold" letter-spacing="3" text-anchor="middle">
+      DIGITAL SPHERE MOBILE ENGINEERING
+    </text>
+    
+    <text x="350" y="220" font-family="'Inter', sans-serif" font-size="32" fill="#f8fafc" font-weight="800" letter-spacing="1" text-anchor="middle">
+      5G-Powered Mobile Vitals
+    </text>
+
+    <text x="350" y="270" font-family="'Inter', sans-serif" font-size="16" fill="#94a3b8" font-weight="500" text-anchor="middle">
+      High-speed cloud rendering &amp; ultra-low latency response feeds
+    </text>
+
+    <line x1="250" y1="310" x2="450" y2="310" stroke="#273449" stroke-width="1" />
+
+    <text x="350" y="340" font-family="'Inter', sans-serif" font-size="12" fill="#10b981" font-weight="bold" letter-spacing="2" text-anchor="middle">
+      5G CONNECTIVITY
+    </text>
+  </g>
+</svg>

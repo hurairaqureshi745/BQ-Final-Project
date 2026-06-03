@@ -1,0 +1,142 @@
+.section {
+  position: relative;
+  padding: var(--space-xl) var(--space-sm);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(6, 182, 212, 0.08), transparent 26rem),
+    var(--color-bg);
+}
+
+.container {
+  width: min(1120px, 100%);
+  margin-inline: auto;
+}
+
+.header {
+  max-width: 720px;
+  margin-inline: auto;
+  text-align: center;
+}
+
+.label {
+  margin-bottom: var(--space-xs);
+  color: var(--color-secondary);
+  font-size: var(--fs-small);
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.header h2 {
+  margin: 0;
+  color: var(--color-text);
+  font-size: clamp(2rem, 4vw, var(--fs-h2));
+  line-height: 1.15;
+}
+
+.description {
+  max-width: 620px;
+  margin: var(--space-sm) auto 0;
+  color: var(--color-text-muted);
+  font-size: var(--fs-body);
+}
+
+.metrics {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-lg);
+  margin-top: var(--space-lg);
+}
+
+.metric {
+  min-width: 120px;
+  text-align: center;
+}
+
+.metric dt {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+}
+
+.metric dd {
+  margin: 0;
+  background: var(--gradient-primary);
+  background-clip: text;
+  color: transparent;
+  font-size: var(--fs-h3);
+  font-weight: 800;
+}
+
+.logoGrid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.logoCard {
+  min-height: 96px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(39, 52, 73, 0.78);
+  border-radius: var(--radius-md);
+  background: rgba(17, 24, 39, 0.48);
+  box-shadow: var(--shadow-card);
+  opacity: 0.78;
+  backdrop-filter: blur(14px);
+  transition:
+    border-color 200ms ease,
+    box-shadow 200ms ease,
+    opacity 200ms ease,
+    transform 200ms ease;
+}
+
+.logoCard span {
+  color: var(--color-text-muted);
+  font-size: var(--fs-small);
+  font-weight: 900;
+  letter-spacing: 0.12em;
+}
+
+.logoCard:hover {
+  border-color: rgba(139, 92, 246, 0.64);
+  box-shadow: var(--shadow-primary);
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.logoCard:hover span {
+  color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+  .section {
+    padding-block: var(--space-xl);
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .section {
+    padding: var(--space-xl) var(--space-sm);
+  }
+
+  .metrics {
+    flex-wrap: wrap;
+    gap: var(--space-md);
+  }
+
+  .metric {
+    min-width: 92px;
+  }
+
+  .logoGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .logoCard {
+    min-height: 82px;
+  }
+}
