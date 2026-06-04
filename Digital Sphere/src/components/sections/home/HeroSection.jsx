@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { ROUTES } from '../../../utils/routes'
 import styles from './HeroSection.module.css'
 
 export function HeroSection() {
@@ -17,12 +19,12 @@ export function HeroSection() {
           </p>
 
           <div className={styles.actions} aria-label="Hero actions">
-            <a className={styles.primaryButton} href="/contact">
+            <Link className={styles.primaryButton} to={ROUTES.contact}>
               Get Started
-            </a>
-            <a className={styles.secondaryButton} href="/services">
+            </Link>
+            <Link className={styles.secondaryButton} to={ROUTES.services}>
               View Services
-            </a>
+            </Link>
           </div>
 
           <ul className={styles.trustList} aria-label="Digital Sphere trust indicators">
