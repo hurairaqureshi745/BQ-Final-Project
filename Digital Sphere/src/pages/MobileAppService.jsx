@@ -1,32 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  FiCheck,
-  FiChevronDown,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiCpu,
-  FiAward,
-  FiShield,
-  FiTrendingUp,
-  FiSliders,
-  FiMessageSquare,
-  FiActivity,
-  FiShoppingBag,
-  FiBriefcase,
-  FiLayers,
-  FiGlobe,
-  FiMonitor,
-  FiLayout,
-  FiSmartphone,
-  FiArrowRight,
-  FiHeart,
-  FiUsers,
-  FiBookOpen,
-  FiCompass,
-  FiSettings
-} from 'react-icons/fi'
+import { AnimatedStat } from '../components/common/AnimatedStat'
+import { FiCheck, FiChevronDown, FiMail, FiPhone, FiMapPin, FiCpu, FiShield, FiTrendingUp, FiSliders, FiMessageSquare, FiShoppingBag, FiBriefcase, FiGlobe, FiMonitor, FiSmartphone, FiHeart, FiUsers, FiCompass, FiSettings } from 'react-icons/fi'
 import { Container } from '../components/common/Container'
 import { SectionHeader } from '../components/common/SectionHeader'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -336,9 +311,9 @@ export function MobileAppService() {
   }
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${styles.page}`}>
       {/* SECTION 1: SERVICE HERO */}
-      <section className={styles.hero} aria-labelledby="service-hero-title">
+      <section className={`reveal-trigger ${styles.hero}`} aria-labelledby="service-hero-title">
         <Container>
           <div className={styles.heroContent}>
             <span className={styles.badge}>Mobile App Development</span>
@@ -361,7 +336,7 @@ export function MobileAppService() {
           <div className={styles.heroStats}>
             {stats.map((stat) => (
               <div className={styles.heroStatCard} key={stat.label}>
-                <strong>{stat.value}</strong>
+                <AnimatedStat value={stat.value} />
                 <span>{stat.label}</span>
               </div>
             ))}
@@ -370,7 +345,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 2: WHAT IS MOBILE APP DEVELOPMENT */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="intro-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="intro-title">
         <Container>
           <div className={styles.introContent}>
             <div className={styles.introLeft}>
@@ -403,7 +378,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 3: WHY MOBILE APPS MATTER FOR BUSINESSES */}
-      <section className={styles.section} aria-labelledby="benefits-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="benefits-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -430,7 +405,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 4: MOBILE APP SERVICES WE OFFER */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="services-offer-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="services-offer-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -457,7 +432,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 5: TYPES OF MOBILE APPS WE BUILD */}
-      <section className={styles.section} aria-labelledby="app-types-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="app-types-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -484,7 +459,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 6: TECHNOLOGIES & PLATFORMS */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="tech-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="tech-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -511,7 +486,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 7: OUR APP DEVELOPMENT PROCESS */}
-      <section className={styles.section} aria-labelledby="process-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="process-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -535,7 +510,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 8: WHY CHOOSE DIGITAL SPHERE */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="choose-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="choose-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -562,7 +537,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 9: SOLUTION PACKAGES */}
-      <section className={styles.section} aria-labelledby="packages-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="packages-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -605,7 +580,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 10: FAQ SECTION */}
-      <section className={`${styles.section} ${styles.faqSection}`} aria-labelledby="faq-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.faqSection}`} aria-labelledby="faq-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -650,7 +625,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 11: FINAL CTA */}
-      <section className={`${styles.section} ${styles.ctaSection}`} aria-label="CTA">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.ctaSection}`} aria-label="CTA">
         <Container>
           <div className={styles.ctaCard}>
             <h2>Ready To Turn Your App Idea Into Reality?</h2>
@@ -670,7 +645,7 @@ export function MobileAppService() {
       </section>
 
       {/* SECTION 12: CONTACT FORM */}
-      <section className={styles.section} id="discuss-app" aria-labelledby="form-heading">
+      <section className={`reveal-trigger ${styles.section}`} id="discuss-app" aria-labelledby="form-heading">
         <Container>
           <div className={styles.contactLayout}>
             <div className={styles.contactFormCard}>

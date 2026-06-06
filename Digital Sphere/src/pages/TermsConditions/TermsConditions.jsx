@@ -1,31 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import { 
-  FiMail, 
-  FiClock, 
-  FiShield, 
-  FiInfo, 
-  FiLock, 
-  FiAlertTriangle, 
-  FiArrowRight, 
-  FiCheckCircle, 
-  FiBriefcase,
-  FiFileText,
-  FiCreditCard,
-  FiTruck,
-  FiKey,
-  FiCpu,
-  FiSlash,
-  FiCompass,
-  FiAlertCircle
-} from 'react-icons/fi'
+import { FiMail, FiShield, FiInfo, FiLock, FiAlertTriangle, FiBriefcase, FiFileText, FiCreditCard } from 'react-icons/fi'
 import styles from './TermsConditions.module.css'
-
 export function TermsConditions() {
   useDocumentTitle('Terms & Conditions | Digital Sphere')
   const [activeSection, setActiveSection] = useState('section-1')
-
   // Setup scroll observer to dynamically highlight current reading section in sidebar
   useEffect(() => {
     const sections = document.querySelectorAll(`.${styles.legalSection}`)
@@ -510,7 +490,7 @@ export function TermsConditions() {
       </div>
 
       {/* FINAL CTA SECTION */}
-      <section className={styles.finalCta}>
+      <section className={`reveal-trigger ${styles.finalCta}`}>
         <div className={styles.container}>
           <div className={styles.ctaCard}>
             <h2>Ready to Scale Your Digital Presence?</h2>

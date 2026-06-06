@@ -4,9 +4,9 @@ import styles from './HeroSection.module.css'
 
 export function HeroSection() {
   return (
-    <section className={styles.section} aria-labelledby="home-hero-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="home-hero-title">
       <div className={styles.container}>
-        <div className={styles.content}>
+        <div className={`${styles.content}`}>
           <p className={styles.badge}>Digital Agency</p>
 
           <h1 id="home-hero-title" className={styles.heading}>

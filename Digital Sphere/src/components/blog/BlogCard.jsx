@@ -6,7 +6,7 @@ export function BlogCard({ article }) {
   if (!article) return null
 
   return (
-    <article className={styles.card}>
+    <article className={`reveal-trigger ${styles.card}`}>
       <Link to={`/blog/${article.slug}`} className={styles.thumbnailLink} aria-label={`Read ${article.title}`}>
         <div 
           className={styles.thumbnail} 

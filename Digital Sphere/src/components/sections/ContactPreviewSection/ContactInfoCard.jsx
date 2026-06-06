@@ -4,7 +4,7 @@ export function ContactInfoCard({ icon: Icon, label, value }) {
   const isArray = Array.isArray(value)
 
   return (
-    <article className={styles.card}>
+    <article className={`reveal-trigger ${styles.card}`}>
       <div className={styles.iconBox} aria-hidden="true">
         <Icon />
       </div>

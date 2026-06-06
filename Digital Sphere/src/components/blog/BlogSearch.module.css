@@ -25,8 +25,7 @@
   color: var(--color-text);
   font-family: inherit;
   font-size: var(--fs-body);
-  transition: all 0.2s ease;
-  backdrop-filter: blur(10px);
+  transition: transform 200ms ease, color 200ms ease, opacity 200ms ease;
 }
 
 .input:focus {
@@ -55,10 +54,10 @@
   font-size: 1.15rem;
   padding: var(--space-xs);
   border-radius: 50%;
-  transition: all 0.2s ease;
+  transition: transform 200ms ease, color 200ms ease, opacity 200ms ease;
 }
 
 .clearBtn:hover {
   color: var(--color-text);
-  background: rgba(255, 255, 255, 0.05);
+  
 }

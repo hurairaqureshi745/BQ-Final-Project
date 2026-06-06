@@ -82,12 +82,7 @@
   background: rgba(17, 24, 39, 0.48);
   box-shadow: var(--shadow-card);
   opacity: 0.78;
-  backdrop-filter: blur(14px);
-  transition:
-    border-color 200ms ease,
-    box-shadow 200ms ease,
-    opacity 200ms ease,
-    transform 200ms ease;
+  transition: transform 220ms ease-out;
 }
 
 .logoCard span {
@@ -98,8 +93,7 @@
 }
 
 .logoCard:hover {
-  border-color: rgba(139, 92, 246, 0.64);
-  box-shadow: var(--shadow-primary);
+
   opacity: 1;
   transform: translateY(-2px);
 }

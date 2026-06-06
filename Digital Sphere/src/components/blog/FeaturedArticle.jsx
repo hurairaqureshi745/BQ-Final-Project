@@ -6,7 +6,7 @@ export function FeaturedArticle({ article }) {
   if (!article) return null
 
   return (
-    <article className={styles.container}>
+    <article className={`reveal-trigger ${styles.container}`}>
       <Link to={`/blog/${article.slug}`} className={styles.imageLink} aria-label={`Read ${article.title}`}>
         <div 
           className={styles.imageWrapper} 

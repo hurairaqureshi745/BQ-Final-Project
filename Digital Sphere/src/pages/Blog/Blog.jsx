@@ -2,12 +2,15 @@ import { useState } from 'react'
 import { Container } from '../../components/common/Container'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 import { blogData } from '../../data/blogData'
+import { useSimulatedFetch } from '../../hooks/useSimulatedFetch'
 import { BlogHero } from '../../components/blog/BlogHero'
 import { FeaturedArticle } from '../../components/blog/FeaturedArticle'
 import { BlogSearch } from '../../components/blog/BlogSearch'
 import { CategoryFilter } from '../../components/blog/CategoryFilter'
 import { BlogGrid } from '../../components/blog/BlogGrid'
 import { NewsletterCTA } from '../../components/blog/NewsletterCTA'
+import { Skeleton } from '../../components/common/Skeleton'
+import { EmptyState } from '../../components/common/EmptyState'
 import styles from './Blog.module.css'
 
 export function Blog() {
@@ -16,11 +19,14 @@ export function Blog() {
   const [searchValue, setSearchValue] = useState('')
   const [activeCategory, setActiveCategory] = useState('All')
 
+  const { data: asyncBlogData, isLoading } = useSimulatedFetch(blogData, 800)
+  const currentData = asyncBlogData || []
+
   // Find the featured post
-  const featuredPost = blogData.find((post) => post.featured)
+  const featuredPost = currentData.find((post) => post.featured)
 
   // Filter posts for the grid
-  const filteredPosts = blogData.filter((post) => {
+  const filteredPosts = currentData.filter((post) => {
     // 1. Exclude the main featured post if we are showing all posts and no active search query is set
     if (!searchValue && activeCategory === 'All' && post.featured) {
       return false
@@ -46,20 +52,24 @@ export function Blog() {
   })
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${styles.page}`}>
       <Container>
         {/* SECTION 1: HERO */}
         <BlogHero />
 
         {/* SECTION 2: FEATURED ARTICLE */}
-        {!searchValue && activeCategory === 'All' && featuredPost && (
-          <section className={styles.featuredSection} aria-label="Featured article">
-            <FeaturedArticle article={featuredPost} />
+        {!searchValue && activeCategory === 'All' && (
+          <section className={`reveal-trigger ${styles.featuredSection}`} aria-label="Featured article">
+            {isLoading ? (
+              <Skeleton type="card" className={styles.featuredSkeleton} />
+            ) : featuredPost ? (
+              <FeaturedArticle article={featuredPost} />
+            ) : null}
           </section>
         )}
 
         {/* ARTICLES HUB SECTION */}
-        <section className={styles.articlesHub} id="articles" aria-label="Articles Feed">
+        <section className={`reveal-trigger ${styles.articlesHub}`} id="articles" aria-label="Articles Feed">
           <div className={styles.filterBar}>
             {/* SECTION 3: SEARCH BAR */}
             <BlogSearch searchValue={searchValue} setSearchValue={setSearchValue} />
@@ -72,7 +82,23 @@ export function Blog() {
           </div>
 
           {/* SECTION 5: BLOG GRID */}
-          <BlogGrid articles={filteredPosts} />
+          {isLoading ? (
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: 'var(--space-xl)' }}>
+              <Skeleton type="card" />
+              <Skeleton type="card" />
+              <Skeleton type="card" />
+              <Skeleton type="card" />
+              <Skeleton type="card" />
+              <Skeleton type="card" />
+            </div>
+          ) : filteredPosts.length > 0 ? (
+            <BlogGrid articles={filteredPosts} />
+          ) : (
+            <EmptyState 
+              title="No Articles Found" 
+              message="We couldn't find any articles matching your search or filter criteria. Try adjusting your search." 
+            />
+          )}
         </section>
 
         {/* SECTION 6: NEWSLETTER CTA */}

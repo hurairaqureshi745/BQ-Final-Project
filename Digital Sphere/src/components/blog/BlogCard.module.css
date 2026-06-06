@@ -5,14 +5,16 @@
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  backdrop-filter: blur(10px);
+  transition: transform 220ms ease-out;
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(6, 182, 212, 0.3);
-  box-shadow: var(--shadow-card), 0 0 25px rgba(6, 182, 212, 0.05);
+  transform: translateY(-4px);
+
+}
+
+.card:active {
+  transform: translateY(-1px);
 }
 
 .thumbnailLink {
@@ -24,11 +26,11 @@
 .thumbnail {
   width: 100%;
   height: 100%;
-  transition: transform 0.5s ease;
+  transition: transform 400ms ease;
 }
 
 .card:hover .thumbnail {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .content {
@@ -140,7 +142,7 @@
   font-weight: 600;
   font-size: var(--fs-small);
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: transform 200ms ease, color 200ms ease, opacity 200ms ease;
 }
 
 .ctaLink svg {

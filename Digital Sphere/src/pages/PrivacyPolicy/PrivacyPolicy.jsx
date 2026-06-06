@@ -1,26 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import { 
-  FiMail, 
-  FiPhone, 
-  FiClock, 
-  FiShield, 
-  FiInfo, 
-  FiLock, 
-  FiAlertTriangle, 
-  FiArrowRight, 
-  FiCheckCircle, 
-  FiDatabase, 
-  FiUserCheck,
-  FiFileText
-} from 'react-icons/fi'
+import { FiMail, FiShield, FiLock, FiAlertTriangle, FiFileText } from 'react-icons/fi'
 import styles from './PrivacyPolicy.module.css'
-
 export function PrivacyPolicy() {
   useDocumentTitle('Privacy Policy | Digital Sphere')
   const [activeSection, setActiveSection] = useState('section-1')
-
   // Setup scroll observer to dynamically highlight current reading section in sidebar
   useEffect(() => {
     const sections = document.querySelectorAll(`.${styles.legalSection}`)
@@ -470,7 +455,7 @@ export function PrivacyPolicy() {
       </div>
 
       {/* SECTION 14 - FINAL CTA SECTION */}
-      <section className={styles.finalCta}>
+      <section className={`reveal-trigger ${styles.finalCta}`}>
         <div className={styles.container}>
           <div className={styles.ctaCard}>
             <h2>Your Trust Matters To Us</h2>

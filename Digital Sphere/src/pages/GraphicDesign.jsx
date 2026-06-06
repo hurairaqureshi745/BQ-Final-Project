@@ -1,41 +1,9 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
-import {
-  FiCheck,
-  FiChevronDown,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiCpu,
-  FiAward,
-  FiShield,
-  FiTrendingUp,
-  FiSliders,
-  FiMessageSquare,
-  FiActivity,
-  FiShoppingBag,
-  FiBriefcase,
-  FiLayers,
-  FiGlobe,
-  FiMonitor,
-  FiLayout,
-  FiSmartphone,
-  FiArrowRight,
-  FiHeart,
-  FiUsers,
-  FiBookOpen,
-  FiCompass,
-  FiCheckCircle,
-  FiXCircle,
-  FiEdit,
-  FiTarget
-} from 'react-icons/fi'
+import { FiCheck, FiChevronDown, FiMail, FiPhone, FiMapPin, FiCpu, FiAward, FiActivity, FiShoppingBag, FiBriefcase, FiLayers, FiGlobe, FiMonitor, FiCompass, FiTarget } from 'react-icons/fi'
 import { Container } from '../components/common/Container'
 import { SectionHeader } from '../components/common/SectionHeader'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
-import { ROUTES } from '../utils/routes'
 import styles from './GraphicDesign.module.css'
-
 /* ==========================================================================
    Page Datasets
    ========================================================================= */
@@ -386,9 +354,9 @@ export function GraphicDesign() {
   }
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${styles.page}`}>
       {/* SECTION 1: HERO */}
-      <section className={styles.hero} aria-labelledby="service-hero-title">
+      <section className={`reveal-trigger ${styles.hero}`} aria-labelledby="service-hero-title">
         <Container>
           <div className={styles.heroContent}>
             <span className={styles.badge}>Graphic Design</span>
@@ -411,7 +379,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 2: WHY VISUAL DESIGN MATTERS */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="intro-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="intro-title">
         <Container>
           <div className={styles.introContent}>
             <div className={styles.introLeft}>
@@ -450,7 +418,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 3: OUR GRAPHIC DESIGN SERVICES */}
-      <section className={styles.section} aria-labelledby="services-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="services-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -463,7 +431,7 @@ export function GraphicDesign() {
             {servicesList.map((service) => {
               const Icon = service.icon
               return (
-                <article className={styles.card} key={service.title}>
+                <article className={`reveal-trigger ${styles.card}`} key={service.title}>
                   <div className={styles.iconBox} aria-hidden="true">
                     <Icon />
                   </div>
@@ -480,7 +448,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 4: BRAND IDENTITY PROCESS */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="process-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="process-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -504,7 +472,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 5: DESIGN SOLUTIONS */}
-      <section className={styles.section} aria-labelledby="packages-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="packages-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -547,7 +515,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 6: PORTFOLIO SHOWCASE */}
-      <section className={`${styles.section} ${styles.portfolioShowcase}`} id="showcase" aria-labelledby="portfolio-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.portfolioShowcase}`} id="showcase" aria-labelledby="portfolio-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -572,7 +540,7 @@ export function GraphicDesign() {
 
           <div className={styles.showcaseGrid}>
             {filteredPortfolio.map((item) => (
-              <article className={styles.showcaseCard} key={item.name}>
+              <article className={`reveal-trigger ${styles.showcaseCard}`} key={item.name}>
                 <div className={styles.showcaseImageWrapper} aria-hidden="true">
                   <span className={styles.showcaseImagePlaceholder}>{item.category}</span>
                 </div>
@@ -588,7 +556,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 7: CREATIVE DESIGN CAPABILITIES */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="capabilities-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="capabilities-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -615,7 +583,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 8: INDUSTRIES WE SERVE */}
-      <section className={styles.section} aria-labelledby="industries-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="industries-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -635,7 +603,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 9: OUR CREATIVE DIFFERENCE */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="difference-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="difference-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -662,7 +630,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 10: TESTIMONIALS */}
-      <section className={styles.section} aria-labelledby="testimonials-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="testimonials-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -673,7 +641,7 @@ export function GraphicDesign() {
           </div>
           <div className={styles.testimonialsGrid}>
             {testimonials.map((t) => (
-              <article className={styles.testimonialCard} key={t.author}>
+              <article className={`reveal-trigger ${styles.testimonialCard}`} key={t.author}>
                 <p className={styles.testimonialQuote}>"{t.quote}"</p>
                 <div className={styles.testimonialAuthor}>
                   <div className={styles.authorInitials} aria-hidden="true">{t.initials}</div>
@@ -689,7 +657,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 11: FAQ */}
-      <section className={`${styles.section} ${styles.faqSection}`} aria-labelledby="faq-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.faqSection}`} aria-labelledby="faq-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -734,7 +702,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 12: FINAL CTA */}
-      <section className={`${styles.section} ${styles.ctaSection}`} aria-label="CTA">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.ctaSection}`} aria-label="CTA">
         <Container>
           <div className={styles.ctaCard}>
             <h2>Transform Your Brand Into A Powerful Visual Experience</h2>
@@ -754,7 +722,7 @@ export function GraphicDesign() {
       </section>
 
       {/* SECTION 13: CONTACT FORM */}
-      <section className={styles.section} id="discuss-design" aria-labelledby="form-heading">
+      <section className={`reveal-trigger ${styles.section}`} id="discuss-design" aria-labelledby="form-heading">
         <Container>
           <div className={styles.contactLayout}>
             <div className={styles.contactFormCard}>

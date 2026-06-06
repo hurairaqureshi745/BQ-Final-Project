@@ -121,7 +121,7 @@
   text-decoration: none;
   font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 220ms ease-out;
   border: none;
 }
 
@@ -132,7 +132,7 @@
 }
 
 .primaryBtn:hover {
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.6);
+  
   transform: translateY(-2px);
   color: var(--color-text);
 }
@@ -141,13 +141,12 @@
   border: 1px solid var(--color-border);
   background: rgba(17, 24, 39, 0.65);
   color: var(--color-text);
-  backdrop-filter: blur(8px);
 }
 
 .secondaryBtn:hover {
-  border-color: rgba(6, 182, 212, 0.65);
+  
   color: var(--color-secondary);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.25);
+  
   transform: translateY(-2px);
 }
 
@@ -203,19 +202,22 @@
   padding: var(--space-xl) var(--space-lg);
   background: linear-gradient(145deg, rgba(31, 41, 55, 0.45), rgba(17, 24, 39, 0.25));
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(16px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 220ms ease-out;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   text-decoration: none;
   color: inherit;
+  position: relative;
 }
 
 .methodCard:hover {
-  border-color: rgba(6, 182, 212, 0.5);
-  box-shadow: 0 0 30px rgba(6, 182, 212, 0.15), var(--shadow-card);
+
   transform: translateY(-4px);
+}
+
+.methodCard:active {
+  transform: translateY(-1px);
 }
 
 .methodIcon {
@@ -230,7 +232,7 @@
   justify-content: center;
   font-size: 1.5rem;
   margin-bottom: var(--space-md);
-  transition: all 0.3s ease;
+  transition: transform 220ms ease-out;
 }
 
 .methodCard:hover .methodIcon {
@@ -283,7 +285,6 @@
   padding: var(--space-2xl);
   background: linear-gradient(135deg, rgba(31, 41, 55, 0.6), rgba(17, 24, 39, 0.4));
   box-shadow: var(--shadow-card), 0 0 40px rgba(0, 0, 0, 0.4);
-  backdrop-filter: blur(20px);
   position: relative;
   overflow: hidden;
 }
@@ -335,7 +336,7 @@
   color: var(--color-text);
   font-family: inherit;
   font-size: 1rem;
-  transition: all 0.25s ease;
+  transition: transform 200ms ease, border-color 200ms ease, opacity 200ms ease;
   outline: none;
 }
 
@@ -372,15 +373,15 @@
   text-align: center;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.25s ease;
+  transition: transform 200ms ease, border-color 200ms ease, opacity 200ms ease;
   user-select: none;
   font-size: 0.95rem;
 }
 
 .choiceCard:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  
   color: var(--color-text);
-  background: rgba(31, 41, 55, 0.4);
+  
 }
 
 .choiceCardActive {
@@ -430,7 +431,35 @@
 }
 
 /* ==========================================================================
-   Why Work With Us
+   Form Validation & States
+   ========================================================================== */
+.inputError {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.05) !important;
+}
+
+.inputError:focus {
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.15) !important;
+}
+
+.errorText {
+  display: block;
+  color: #ef4444;
+  font-size: 0.85rem;
+  margin-top: 6px;
+  font-weight: 600;
+  max-height: 20px;
+  opacity: 1;
+  transition: opacity 240ms ease;
+}
+
+.btnLoading {
+  opacity: 0.7;
+  cursor: wait !important;
+}
+
+/* ==========================================================================
+   Why Work With Digital Sphere
    ========================================================================== */
 .whySection {
   background: radial-gradient(circle at 90% 70%, rgba(6, 182, 212, 0.04) 0%, transparent 60%);
@@ -447,17 +476,19 @@
   border-radius: var(--radius-lg);
   padding: var(--space-lg);
   background: linear-gradient(145deg, rgba(31, 41, 55, 0.4), rgba(17, 24, 39, 0.2));
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 220ms ease-out;
   display: flex;
   gap: var(--space-md);
   align-items: flex-start;
 }
 
 .whyCard:hover {
-  border-color: rgba(139, 92, 246, 0.45);
-  box-shadow: 0 0 25px rgba(124, 58, 237, 0.12), var(--shadow-card);
+
   transform: translateY(-3px);
+}
+
+.whyCard:active {
+  transform: translateY(-1px);
 }
 
 .whyIconBox {
@@ -472,7 +503,7 @@
   justify-content: center;
   font-size: 1.3rem;
   flex-shrink: 0;
-  transition: all 0.3s ease;
+  transition: transform 220ms ease-out;
 }
 
 .whyCard:hover .whyIconBox {
@@ -545,7 +576,7 @@
   font-weight: 800;
   font-size: 1.15rem;
   margin-bottom: var(--space-md);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 220ms ease-out;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -591,17 +622,19 @@
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-lg);
   background: linear-gradient(145deg, rgba(31, 41, 55, 0.45), rgba(17, 24, 39, 0.25));
-  backdrop-filter: blur(12px);
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 220ms ease-out;
   display: flex;
   flex-direction: column;
   height: 100%;
 }
 
 .serviceCard:hover {
-  border-color: rgba(6, 182, 212, 0.45);
-  box-shadow: 0 0 25px rgba(6, 182, 212, 0.12), var(--shadow-card);
+
   transform: translateY(-4px);
+}
+
+.serviceCard:active {
+  transform: translateY(-1px);
 }
 
 .serviceIconBox {
@@ -616,7 +649,7 @@
   justify-content: center;
   font-size: 1.4rem;
   margin-bottom: var(--space-md);
-  transition: all 0.3s ease;
+  transition: transform 220ms ease-out;
 }
 
 .serviceCard:hover .serviceIconBox {
@@ -650,12 +683,19 @@
   font-weight: 700;
   font-size: var(--fs-small);
   margin-top: auto;
-  transition: gap 0.25s ease, color 0.25s ease;
+  transition: color 220ms ease;
+}
+
+.learnMoreBtn svg {
+  transition: transform 220ms ease;
 }
 
 .learnMoreBtn:hover {
   color: var(--color-text);
-  gap: var(--space-sm);
+}
+
+.learnMoreBtn:hover svg {
+  transform: translateX(4px);
 }
 
 /* ==========================================================================
@@ -677,14 +717,12 @@
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: var(--radius-md);
   background: rgba(31, 41, 55, 0.35);
-  backdrop-filter: blur(8px);
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: transform 220ms ease-out;
 }
 
 .faqItem:hover {
-  border-color: rgba(255, 255, 255, 0.12);
-  background: rgba(31, 41, 55, 0.55);
+
 }
 
 .faqHeader {
@@ -728,16 +766,21 @@
 }
 
 .faqBody {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s cubic-bezier(0.16, 1, 0.3, 1), padding 0.3s ease;
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 240ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faqBodyOpen {
+  grid-template-rows: 1fr;
 }
 
 .faqBodyInner {
-  padding: 0 var(--space-lg) var(--space-md) var(--space-lg);
+  overflow: hidden;
+  padding: 0 var(--space-xl) var(--space-lg);
   color: var(--color-text-muted);
+  font-size: var(--fs-body);
   line-height: 1.6;
-  font-size: 0.95rem;
 }
 
 .faqBodyInner p {
@@ -762,7 +805,6 @@
   box-shadow:
     var(--shadow-card),
     0 0 40px rgba(124, 58, 237, 0.15);
-  backdrop-filter: blur(20px);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -823,19 +865,7 @@
   align-items: center;
   gap: var(--space-sm);
   z-index: 1000;
-  animation: slideIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   font-weight: 600;
-}
-
-@keyframes slideIn {
-  from {
-    transform: translateX(100%) translateY(0);
-    opacity: 0;
-  }
-  to {
-    transform: translateX(0) translateY(0);
-    opacity: 1;
-  }
 }
 
 /* ==========================================================================

@@ -12,6 +12,7 @@ import { Container } from '../common/Container'
 import { navigationLinks } from '../../data/navigation'
 import { ROUTES } from '../../utils/routes'
 import logoImg from '../../assets/logo.png'
+import { CopyToClipboard } from '../common/CopyToClipboard'
 import styles from './Footer.module.css'
 
 const servicesList = [
@@ -93,11 +94,11 @@ export function Footer() {
             <ul className={styles.contactList}>
               <li className={styles.contactItem}>
                 <FiMail aria-hidden="true" />
-                <a href="mailto:digitalsphereteam@gmail.com">digitalsphereteam@gmail.com</a>
+                <CopyToClipboard text="digitalsphereteam@gmail.com" hrefType="email" />
               </li>
               <li className={styles.contactItem}>
                 <FiPhone aria-hidden="true" />
-                <a href="tel:+923445038278">+92 344 5038278</a>
+                <CopyToClipboard text="+92 344 5038278" hrefType="phone" />
               </li>
               <li className={styles.contactItem}>
                 <FiMapPin aria-hidden="true" />

@@ -64,7 +64,6 @@
     linear-gradient(145deg, rgba(31, 41, 55, 0.62), rgba(17, 24, 39, 0.36)),
     rgba(17, 24, 39, 0.52);
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(16px);
   transition:
     border-color 220ms ease,
     box-shadow 220ms ease,
@@ -73,9 +72,7 @@
 
 .card:hover {
   border-color: rgba(139, 92, 246, 0.72);
-  box-shadow:
-    var(--shadow-card),
-    0 0 30px rgba(124, 58, 237, 0.24);
+  
   transform: translateY(-6px);
 }
 

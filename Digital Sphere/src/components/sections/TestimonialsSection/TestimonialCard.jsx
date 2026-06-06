@@ -4,7 +4,7 @@ import styles from './TestimonialsSection.module.css'
 
 export function TestimonialCard({ testimonial }) {
   return (
-    <article className={styles.card}>
+    <article className={`reveal-trigger ${styles.card}`}>
       <div className={styles.quoteIcon} aria-hidden="true">
         <RiDoubleQuotesL />
       </div>

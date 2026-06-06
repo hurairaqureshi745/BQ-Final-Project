@@ -2,9 +2,13 @@ import styles from './PortfolioSection.module.css'
 
 export function PortfolioCard({ project }) {
   return (
-    <article className={styles.card}>
-      <div className={`${styles.preview} ${styles[project.accent]}`}>
-        <span>Project Preview</span>
+    <article className={`reveal-trigger ${styles.card}`}>
+      <div className={styles.preview}>
+        {project.image ? (
+          <img src={project.image} alt={project.title} loading="lazy" className={styles.portfolioImage} />
+        ) : (
+          <span>Project Preview</span>
+        )}
       </div>
 
       <div className={styles.cardContent}>

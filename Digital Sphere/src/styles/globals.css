@@ -52,3 +52,75 @@ a:hover {
   background-clip: text;
   color: transparent;
 }
+
+/* ===========================================
+   SCROLL REVEAL ANIMATION SYSTEM
+   
+   ARCHITECTURE RULE:
+   Content is ALWAYS visible by default.
+   The animation is layered ON TOP as enhancement.
+   If JS fails, content remains 100% visible.
+   An animation can never make content invisible.
+   =========================================== */
+
+/*
+  .reveal-trigger:
+  No opacity:0 here. Elements are fully visible.
+  The observer adds .reveal-visible which triggers
+  the CSS keyframe. The keyframe plays once and ends
+  at opacity:1 (fully visible).
+*/
+
+/* Legacy class — kept for any direct usage, safe fallback */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal-visible.reveal-hidden,
+.reveal-hidden.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/*
+  Section disabled-animation: Triggered when .reveal-visible is added.
+*/
+.reveal-trigger {
+  /* Visible by default — no opacity:0 */
+}
+
+.reveal-trigger.reveal-visible {
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal-hidden {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===========================================
+   GLOBAL MICRO-INTERACTIONS
+   GPU-safe: transform + opacity only.
+   Applied globally so every CTA, nav link,
+   and icon button gets consistent premium feel.
+   =========================================== */
+
+/* Universal focus ring for accessibility */
+:focus-visible {
+  outline: 2px solid rgba(139, 92, 246, 0.7);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Prevent mobile tap highlight flash */
+button, a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Image smooth reveal on load */
+img {
+  /* No opacity:0 default — images are always visible */
+}

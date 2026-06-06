@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import { Container } from '../common/Container'
 import { navigationLinks } from '../../data/navigation'
@@ -8,13 +8,27 @@ import styles from './Header.module.css'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const closeMenu = () => {
     setIsMenuOpen(false)
   }
 
   return (
-    <header className={styles.header}>
+    <header className={`${styles.header} ${isScrolled ? styles.headerScrolled : ''}`}>
       <Container className={styles.container}>
         <NavLink className={styles.logo} to={ROUTES.home} aria-label="Digital Sphere home">
           <img src={logoImg} alt="Digital Sphere Logo" className={styles.logoIcon} />

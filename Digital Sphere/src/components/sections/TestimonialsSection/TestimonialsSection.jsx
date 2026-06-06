@@ -1,12 +1,13 @@
 import { Container } from '../../common/Container'
 import { SectionHeader } from '../../common/SectionHeader'
+import { Carousel } from '../../common/Carousel'
 import { TestimonialCard } from './TestimonialCard'
 import { testimonials } from './testimonialsData'
 import styles from './TestimonialsSection.module.css'
 
 export function TestimonialsSection() {
   return (
-    <section className={styles.section} aria-labelledby="testimonials-title">
+    <section className={`reveal-trigger ${`${styles.section}`}`} aria-labelledby="testimonials-title">
       <Container className={styles.container}>
         <div className={styles.sectionHeader}>
           <SectionHeader
@@ -17,11 +18,12 @@ export function TestimonialsSection() {
           />
         </div>
 
-        <div className={styles.grid}>
+        {/* Replaced static grid with Safe-Mode Carousel */}
+        <Carousel gap={24}>
           {testimonials.map((testimonial) => (
             <TestimonialCard key={testimonial.name} testimonial={testimonial} />
           ))}
-        </div>
+        </Carousel>
       </Container>
     </section>
   )

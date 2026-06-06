@@ -14,7 +14,7 @@ const contactData = {
 
 export function ContactPreviewSection() {
   return (
-    <section className={styles.section} aria-labelledby="home-contact-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="home-contact-title">
       <Container className={styles.container}>
         <div className={styles.leftSide}>
           <div className={styles.sectionHeader}>

@@ -1,28 +1,11 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import { 
-  FiMail, 
-  FiShield, 
-  FiInfo, 
-  FiLock, 
-  FiAlertTriangle, 
-  FiArrowRight, 
-  FiCheckCircle, 
-  FiBriefcase,
-  FiFileText,
-  FiCreditCard,
-  FiTruck,
-  FiCpu,
-  FiSlash,
-  FiRefreshCw
-} from 'react-icons/fi'
+import { FiMail, FiShield, FiInfo, FiAlertTriangle, FiFileText, FiCreditCard } from 'react-icons/fi'
 import styles from './RefundPolicy.module.css'
-
 export function RefundPolicy() {
   useDocumentTitle('Refund Policy | Digital Sphere')
   const [activeSection, setActiveSection] = useState('section-1')
-
   // Setup scroll observer to dynamically highlight current reading section in sidebar
   useEffect(() => {
     const sections = document.querySelectorAll(`.${styles.legalSection}`)
@@ -431,7 +414,7 @@ export function RefundPolicy() {
       </div>
 
       {/* FINAL CTA SECTION */}
-      <section className={styles.finalCta}>
+      <section className={`reveal-trigger ${styles.finalCta}`}>
         <div className={styles.container}>
           <div className={styles.ctaCard}>
             <h2>Ready to Map Your Next Scoping Step?</h2>

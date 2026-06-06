@@ -17,7 +17,7 @@ const companies = [
 
 export function TrustedCompaniesSection() {
   return (
-    <section className={styles.section} aria-labelledby="trusted-companies-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="trusted-companies-title">
       <div className={styles.container}>
         <div className={styles.header}>
           <p className={styles.label}>Trusted By</p>

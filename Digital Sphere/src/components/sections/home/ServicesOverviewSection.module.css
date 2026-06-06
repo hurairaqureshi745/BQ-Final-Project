@@ -64,41 +64,64 @@
     linear-gradient(145deg, rgba(31, 41, 55, 0.62), rgba(17, 24, 39, 0.34)),
     rgba(17, 24, 39, 0.52);
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(16px);
-  transition:
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    transform 220ms ease;
+  transition: transform 220ms ease-out, border-color 220ms ease-out, box-shadow 220ms ease-out;
 }
 
 .card:hover {
-  border-color: rgba(139, 92, 246, 0.7);
+  transform: translateY(-4px) scale(1.01);
+  border-color: rgba(139, 92, 246, 0.72);
   box-shadow: var(--shadow-primary);
-  transform: translateY(-6px);
+}
+
+.card:active {
+  transform: translateY(-1px) scale(0.99);
 }
 
 .imageBox {
-  width: 70px;
-  height: 70px;
-  border: 1px solid rgba(6, 182, 212, 0.32);
+  width: 100%;
+  aspect-ratio: 16/9;
   border-radius: var(--radius-md);
-  box-shadow: 0 0 18px rgba(6, 182, 212, 0.14);
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(6, 182, 212, 0.1));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease-out, border-color 0.3s ease-out;
   overflow: hidden;
-  transition:
-    box-shadow 220ms ease,
-    border-color 220ms ease;
+  border: 1px solid rgba(6, 182, 212, 0.2);
 }
 
-.card:hover .imageBox {
-  border-color: rgba(139, 92, 246, 0.68);
-  box-shadow: 0 0 26px rgba(124, 58, 237, 0.38);
+/* GPU-accelerated neon glow using opacity animation */
+.imageBox::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);
+  opacity: 0.3;
+  transition: opacity 0.3s ease-out;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .serviceImage {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.4s ease-out;
+}
+
+.card:hover .imageBox {
+  transform: scale(1.05);
+  border-color: rgba(6, 182, 212, 0.6);
+}
+
+.card:hover .imageBox::before {
+  opacity: 0.8;
+}
+
+.card:hover .serviceImage {
+  transform: scale(1.05);
 }
 
 .card h3 {
@@ -161,4 +184,34 @@
     min-height: 240px;
     padding: var(--space-md);
   }
+}
+
+.ctaWrapper {
+  margin-top: var(--space-xl);
+  display: flex;
+  justify-content: center;
+}
+
+.ctaButton {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-md);
+  padding: 0 var(--space-xl);
+  font-weight: 700;
+  font-size: var(--fs-body);
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  box-shadow: var(--shadow-primary);
+  transition: transform 220ms ease-out;
+}
+
+.ctaButton:hover {
+  color: var(--color-text);
+  transform: translateY(-2px) scale(1.02);
+}
+
+.ctaButton:active {
+  transform: translateY(0) scale(0.98);
 }

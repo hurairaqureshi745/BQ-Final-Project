@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { FiList, FiChevronDown } from 'react-icons/fi'
 import styles from './TableOfContents.module.css'
 
@@ -12,14 +12,16 @@ export function TableOfContents({ content }) {
   const [isOpen, setIsOpen] = useState(false)
   const [activeId, setActiveId] = useState('')
 
-  const headings = content
-    ? content.filter(
-        (block) =>
-          block.type === 'h2' ||
-          block.type === 'h3' ||
-          (block.type === 'heading' && (block.level === 2 || block.level === 3))
-      )
-    : []
+  const headings = useMemo(() => {
+    return content
+      ? content.filter(
+          (block) =>
+            block.type === 'h2' ||
+            block.type === 'h3' ||
+            (block.type === 'heading' && (block.level === 2 || block.level === 3))
+        )
+      : []
+  }, [content])
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -39,7 +41,7 @@ export function TableOfContents({ content }) {
     })
 
     return () => observer.disconnect()
-  }, [content])
+  }, [headings])
 
   if (headings.length === 0) return null
 

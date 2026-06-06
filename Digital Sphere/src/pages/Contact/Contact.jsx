@@ -1,29 +1,8 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
-import { 
-  FiMail, 
-  FiPhone, 
-  FiClock, 
-  FiZap, 
-  FiShield, 
-  FiSmartphone, 
-  FiCode, 
-  FiFeather, 
-  FiTrendingUp, 
-  FiCompass, 
-  FiChevronDown, 
-  FiChevronUp, 
-  FiUsers, 
-  FiLayers, 
-  FiMessageSquare, 
-  FiSend, 
-  FiAward, 
-  FiBriefcase,
-  FiCheckCircle,
-  FiCpu,
-  FiArrowRight
-} from 'react-icons/fi'
+import { FiMail, FiPhone, FiClock, FiZap, FiShield, FiSmartphone, FiCode, FiFeather, FiTrendingUp, FiCompass, FiChevronDown, FiChevronUp, FiUsers, FiLayers, FiMessageSquare, FiSend, FiAward, FiCheckCircle, FiCpu, FiArrowRight } from 'react-icons/fi'
+import { CopyToClipboard } from '../../components/common/CopyToClipboard'
 import styles from './Contact.module.css'
 
 export function Contact() {
@@ -40,10 +19,88 @@ export function Contact() {
   const [message, setMessage] = useState('')
   const [agreed, setAgreed] = useState(false)
   
-  // UI states
+  // Validation & UI states
+  const [errors, setErrors] = useState({})
+  const [touched, setTouched] = useState({})
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [showToast, setShowToast] = useState(false)
   const [toastMessage, setToastMessage] = useState('')
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
+
+  // Refs for focus management
+  const nameRef = useRef(null)
+  const emailRef = useRef(null)
+  const serviceRef = useRef(null)
+  const messageRef = useRef(null)
+
+  // Validation Logic
+  const validateField = (fieldName, value) => {
+    let error = ''
+    switch (fieldName) {
+      case 'name':
+        if (!value.trim()) error = 'Name is required'
+        else if (value.trim().length < 2) error = 'Name is too short'
+        break
+      case 'email':
+        if (!value.trim()) error = 'Email is required'
+        else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = 'Invalid email address'
+        break
+      case 'service':
+        if (!value) error = 'Please select a service'
+        break
+      case 'message':
+        if (!value.trim()) error = 'Project details are required'
+        else if (value.trim().length < 10) error = 'Please provide more details'
+        break
+      case 'agreed':
+        if (!value) error = 'You must agree to continue'
+        break
+      default:
+        break
+    }
+    return error
+  }
+
+  const handleBlur = (e) => {
+    const { id, value } = e.target
+    // Map id to field name for simple mapping
+    const fieldName = id === 'fullName' ? 'name' : 
+                      id === 'emailAddress' ? 'email' : 
+                      id === 'serviceInterest' ? 'service' : 
+                      id === 'projectMessage' ? 'message' : null
+
+    if (fieldName) {
+      setTouched(prev => ({ ...prev, [fieldName]: true }))
+      const error = validateField(fieldName, value)
+      setErrors(prev => ({ ...prev, [fieldName]: error }))
+    }
+  }
+
+  const validateForm = () => {
+    const newErrors = {
+      name: validateField('name', name),
+      email: validateField('email', email),
+      service: validateField('service', service),
+      message: validateField('message', message),
+      agreed: validateField('agreed', agreed)
+    }
+
+    setErrors(newErrors)
+
+    // Check if any errors exist
+    const firstErrorField = Object.keys(newErrors).find(key => newErrors[key] !== '')
+
+    if (firstErrorField) {
+      // Manage Focus
+      if (firstErrorField === 'name' && nameRef.current) nameRef.current.focus()
+      else if (firstErrorField === 'email' && emailRef.current) emailRef.current.focus()
+      else if (firstErrorField === 'service' && serviceRef.current) serviceRef.current.focus()
+      else if (firstErrorField === 'message' && messageRef.current) messageRef.current.focus()
+      
+      return false
+    }
+    return true
+  }
 
   // FAQ contents
   const faqs = [
@@ -94,33 +151,44 @@ export function Contact() {
   const handleSubmit = (e, type) => {
     e.preventDefault()
     
-    if (!name || !email || !service || !message) {
-      alert('Please fill out all required fields (Name, Email, Service Interest, and Message).')
-      return
+    // Mark all fields as touched to show errors if they just clicked submit
+    setTouched({
+      name: true,
+      email: true,
+      service: true,
+      message: true,
+      agreed: true
+    })
+
+    if (!validateForm()) {
+      return // Validation failed, focus is already managed by validateForm
     }
-    if (!agreed) {
-      alert('Please agree to be contacted regarding your inquiry to submit.')
-      return
-    }
+
+    setIsSubmitting(true)
 
     // Simulate API request
-    setToastMessage(
-      type === 'proposal'
-        ? 'Proposal request received! Our team is preparing an initial scope.'
-        : 'Consultation request received! We will send a calendar link to your email.'
-    )
-    setShowToast(true)
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setToastMessage(
+        type === 'proposal'
+          ? 'Proposal request received! Our team is preparing an initial scope.'
+          : 'Consultation request received! We will send a calendar link to your email.'
+      )
+      setShowToast(true)
 
-    // Reset Form
-    setName('')
-    setEmail('')
-    setPhone('')
-    setCompany('')
-    setService('')
-    setBudget('Startup Project')
-    setTimeline('ASAP')
-    setMessage('')
-    setAgreed(false)
+      // Reset Form securely
+      setName('')
+      setEmail('')
+      setPhone('')
+      setCompany('')
+      setService('')
+      setBudget('Startup Project')
+      setTimeline('ASAP')
+      setMessage('')
+      setAgreed(false)
+      setTouched({})
+      setErrors({})
+    }, 1200) // 1.2s simulated delay
   }
 
   // Auto-hide toast notification after 5 seconds
@@ -176,26 +244,26 @@ export function Contact() {
       </header>
 
       {/* SECTION 2 - CONTACT METHODS */}
-      <section className={`${styles.section} ${styles.methodsSection}`} aria-label="Contact methods">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.methodsSection}`} aria-label="Contact methods">
         <div className={styles.container}>
           <div className={styles.methodsGrid}>
-            <a href="mailto:contact@digitalsphere.com" className={styles.methodCard}>
+            <CopyToClipboard text="contact@digitalsphere.com" hrefType="email" className={styles.methodCard}>
               <div className={styles.methodIcon}>
                 <FiMail />
               </div>
               <h3>Email Us</h3>
               <p className={styles.methodValue}>contact@digitalsphere.com</p>
               <span className={styles.methodLink}>Send email &rarr;</span>
-            </a>
+            </CopyToClipboard>
 
-            <a href="tel:+923445038278" className={styles.methodCard}>
+            <CopyToClipboard text="+92 344 5038278" hrefType="phone" className={styles.methodCard}>
               <div className={styles.methodIcon}>
                 <FiPhone />
               </div>
               <h3>Call Us</h3>
               <p className={styles.methodValue}>+92 344 5038278</p>
               <span className={styles.methodLink}>Call now &rarr;</span>
-            </a>
+            </CopyToClipboard>
 
             <div className={styles.methodCard}>
               <div className={styles.methodIcon}>
@@ -234,25 +302,35 @@ export function Contact() {
                     <label htmlFor="fullName" className={styles.label}>Full Name *</label>
                     <input 
                       id="fullName" 
+                      ref={nameRef}
                       type="text" 
-                      className={styles.input} 
+                      className={`${styles.input} ${touched.name && errors.name ? styles.inputError : ''}`}
                       placeholder="e.g. John Doe"
                       value={name} 
-                      onChange={(e) => setName(e.target.value)} 
-                      required 
+                      onChange={(e) => {
+                        setName(e.target.value)
+                        if (touched.name) setErrors(prev => ({ ...prev, name: validateField('name', e.target.value) }))
+                      }}
+                      onBlur={handleBlur}
                     />
+                    {touched.name && errors.name && <span className={styles.errorText}>{errors.name}</span>}
                   </div>
                   <div className={styles.formGroup}>
                     <label htmlFor="emailAddress" className={styles.label}>Email Address *</label>
                     <input 
                       id="emailAddress" 
+                      ref={emailRef}
                       type="email" 
-                      className={styles.input} 
+                      className={`${styles.input} ${touched.email && errors.email ? styles.inputError : ''}`}
                       placeholder="e.g. john@company.com" 
                       value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required 
+                      onChange={(e) => {
+                        setEmail(e.target.value)
+                        if (touched.email) setErrors(prev => ({ ...prev, email: validateField('email', e.target.value) }))
+                      }}
+                      onBlur={handleBlur}
                     />
+                    {touched.email && errors.email && <span className={styles.errorText}>{errors.email}</span>}
                   </div>
                 </div>
 
@@ -285,10 +363,14 @@ export function Contact() {
                   <label htmlFor="serviceInterest" className={styles.label}>Service Interested In *</label>
                   <select 
                     id="serviceInterest" 
-                    className={styles.select} 
+                    ref={serviceRef}
+                    className={`${styles.select} ${touched.service && errors.service ? styles.inputError : ''}`}
                     value={service}
-                    onChange={(e) => setService(e.target.value)}
-                    required
+                    onChange={(e) => {
+                      setService(e.target.value)
+                      if (touched.service) setErrors(prev => ({ ...prev, service: validateField('service', e.target.value) }))
+                    }}
+                    onBlur={handleBlur}
                   >
                     <option value="" disabled>Select a service option...</option>
                     <option value="Web Development">Web Development</option>
@@ -298,6 +380,7 @@ export function Contact() {
                     <option value="Cyber Security">Cyber Security</option>
                     <option value="Graphic Design">Graphic Design</option>
                   </select>
+                  {touched.service && errors.service && <span className={styles.errorText}>{errors.service}</span>}
                 </div>
 
                 {/* Custom Selection Cards for Budget */}
@@ -339,22 +422,31 @@ export function Contact() {
                   <label htmlFor="projectMessage" className={styles.label}>Project Details *</label>
                   <textarea 
                     id="projectMessage" 
-                    className={styles.textarea} 
+                    ref={messageRef}
+                    className={`${styles.textarea} ${touched.message && errors.message ? styles.inputError : ''}`}
                     placeholder="Describe your project goals, core challenges, and what success looks like..."
                     value={message}
-                    onChange={(e) => setMessage(e.target.value)}
-                    required
+                    onChange={(e) => {
+                      setMessage(e.target.value)
+                      if (touched.message) setErrors(prev => ({ ...prev, message: validateField('message', e.target.value) }))
+                    }}
+                    onBlur={handleBlur}
                   />
+                  {touched.message && errors.message && <span className={styles.errorText}>{errors.message}</span>}
                 </div>
 
-                <div className={styles.checkboxGroup} onClick={() => setAgreed(!agreed)}>
+                <div className={styles.checkboxGroup} onClick={() => {
+                  const newVal = !agreed
+                  setAgreed(newVal)
+                  setErrors(prev => ({ ...prev, agreed: validateField('agreed', newVal) }))
+                }}>
                   <input 
                     type="checkbox" 
                     id="agreeContact" 
                     checked={agreed} 
                     onChange={() => {}} 
                   />
-                  <label htmlFor="agreeContact" className={styles.checkboxLabel}>
+                  <label htmlFor="agreeContact" className={`${styles.checkboxLabel} ${touched.agreed && errors.agreed ? styles.errorText : ''}`}>
                     I agree to be contacted regarding my inquiry and share my details securely with Digital Sphere.
                   </label>
                 </div>
@@ -362,20 +454,22 @@ export function Contact() {
                 <div className={styles.submitRow}>
                   <button 
                     type="submit" 
-                    className={styles.primaryBtn} 
+                    className={`${styles.primaryBtn} ${isSubmitting ? styles.btnLoading : ''}`} 
                     style={{ flex: '1' }}
+                    disabled={isSubmitting}
                   >
                     <FiSend size={16} style={{ marginRight: '8px' }} />
-                    Request Proposal
+                    {isSubmitting ? 'Sending...' : 'Request Proposal'}
                   </button>
                   <button 
                     type="button" 
-                    className={styles.secondaryBtn} 
+                    className={`${styles.secondaryBtn} ${isSubmitting ? styles.btnLoading : ''}`} 
                     style={{ flex: '1' }}
                     onClick={(e) => handleSubmit(e, 'consultation')}
+                    disabled={isSubmitting}
                   >
                     <FiClock size={16} style={{ marginRight: '8px' }} />
-                    Schedule Consultation
+                    {isSubmitting ? 'Sending...' : 'Schedule Consultation'}
                   </button>
                 </div>
               </form>
@@ -385,7 +479,7 @@ export function Contact() {
       </section>
 
       {/* SECTION 4 - WHY WORK WITH DIGITAL SPHERE */}
-      <section className={`${styles.section} ${styles.whySection}`} aria-labelledby="why-section-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.whySection}`} aria-labelledby="why-section-title">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 id="why-section-title">Why Partner With <span>Digital Sphere</span></h2>
@@ -460,7 +554,7 @@ export function Contact() {
       </section>
 
       {/* SECTION 5 - PROJECT PROCESS */}
-      <section className={`${styles.section} ${styles.processSection}`} aria-labelledby="process-section-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.processSection}`} aria-labelledby="process-section-title">
         <div className={styles.container}>
           <div className={styles.sectionHeader} style={{ textAlign: 'center', marginInline: 'auto' }}>
             <h2 id="process-section-title">Our Project <span>Delivery Journey</span></h2>
@@ -508,7 +602,7 @@ export function Contact() {
       </section>
 
       {/* SECTION 6 - SERVICES OVERVIEW */}
-      <section className={styles.section} aria-labelledby="services-section-title">
+      <section className={`reveal-trigger ${`${styles.section}`}`} aria-labelledby="services-section-title">
         <div className={styles.container}>
           <div className={styles.sectionHeader}>
             <h2 id="services-section-title">Explore Our <span>Core Capabilities</span></h2>
@@ -586,7 +680,7 @@ export function Contact() {
       </section>
 
       {/* SECTION 7 - FAQ */}
-      <section className={`${styles.section} ${styles.faqSection}`} aria-labelledby="faq-section-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.faqSection}`} aria-labelledby="faq-section-title">
         <div className={styles.container}>
           <div className={styles.sectionHeader} style={{ textAlign: 'center', marginInline: 'auto' }}>
             <h2 id="faq-section-title">Common <span>Questions</span></h2>
@@ -610,8 +704,8 @@ export function Contact() {
                     {isOpen ? <FiChevronUp className={styles.faqChevron} /> : <FiChevronDown className={styles.faqChevron} />}
                   </button>
                   <div 
-                    className={styles.faqBody} 
-                    style={{ maxHeight: isOpen ? '250px' : '0' }}
+                    className={`${styles.faqBody} ${isOpen ? styles.faqBodyOpen : ''}`} 
+                    aria-hidden={!isOpen}
                   >
                     <div className={styles.faqBodyInner}>
                       <p>{faq.answer}</p>
@@ -625,7 +719,7 @@ export function Contact() {
       </section>
 
       {/* SECTION 8 - FINAL CTA */}
-      <section className={styles.finalCta}>
+      <section className={`reveal-trigger ${styles.finalCta}`}>
         <div className={styles.container}>
           <div className={styles.ctaCard}>
             <h2>Your Next Digital Success Story Starts Here</h2>

@@ -1,29 +1,18 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  FiMonitor,
-  FiLayout,
-  FiSmartphone,
-  FiTrendingUp,
-  FiShield,
-  FiLayers,
-  FiUsers,
-  FiBookOpen,
-  FiCompass,
-  FiBriefcase,
-  FiActivity,
-  FiGlobe,
-  FiChevronDown,
-  FiArrowRight,
-  FiSettings,
-  FiHeart,
-  FiCpu
-} from 'react-icons/fi'
+import { FiMonitor, FiLayout, FiSmartphone, FiTrendingUp, FiShield, FiLayers, FiUsers, FiBookOpen, FiCompass, FiBriefcase, FiActivity, FiGlobe, FiChevronDown, FiArrowRight, FiHeart, FiCpu } from 'react-icons/fi'
 import { Container } from '../components/common/Container'
 import { SectionHeader } from '../components/common/SectionHeader'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
 import { ROUTES } from '../utils/routes'
 import styles from './Services.module.css'
+
+import webDevImg from '../assets/services/web-dev.png'
+import uiUxImg from '../assets/services/ui-ux.png'
+import mobileAppImg from '../assets/services/mobile-app.png'
+import marketingImg from '../assets/services/marketing.png'
+import securityImg from '../assets/services/security.png'
+import graphicImg from '../assets/services/graphic.png'
 
 /* ==========================================================================
    Page Datasets
@@ -31,36 +20,42 @@ import styles from './Services.module.css'
 const coreServices = [
   {
     icon: FiMonitor,
+    image: webDevImg,
     title: 'Web Development',
     route: ROUTES.webDevelopment,
     description: 'Custom websites, web applications, and scalable digital platforms engineered for speed, responsiveness, and safety.'
   },
   {
     icon: FiLayout,
+    image: uiUxImg,
     title: 'UI/UX Design',
     route: ROUTES.uiUxDesign,
     description: 'User-centered design experiences, Figma interactive prototypes, and interface layouts that improve engagement.'
   },
   {
     icon: FiSmartphone,
+    image: mobileAppImg,
     title: 'Mobile App Development',
     route: ROUTES.mobileApps,
     description: 'High-performance mobile solutions built on modern application frameworks to serve mobile-first consumers.'
   },
   {
     icon: FiTrendingUp,
+    image: marketingImg,
     title: 'Digital Marketing',
     route: ROUTES.digitalMarketing,
     description: 'Growth-focused marketing campaigns, SEO improvements, and visual marketing assets designed to drive conversion rates.'
   },
   {
     icon: FiShield,
+    image: securityImg,
     title: 'Cyber Security',
     route: ROUTES.cyberSecurity,
     description: 'Robust server penetration checks, database protection routines, and secure cloud credentials setup.'
   },
   {
     icon: FiLayers,
+    image: graphicImg,
     title: 'Graphic Design',
     route: ROUTES.graphicDesign,
     description: 'Professional visual communication, premium branding systems, logo packages, and social media marketing creatives.'
@@ -207,6 +202,41 @@ const faqItems = [
 ]
 
 /* ==========================================================================
+   Memoized Card Components
+   ========================================================================== */
+
+const CoreServiceCard = React.memo(({ service }) => {
+  return (
+    <article className={`reveal-trigger ${styles.card}`}>
+      <div className={styles.imageBox}>
+        <img src={service.image} alt={service.title} loading="lazy" className={styles.serviceImage} />
+      </div>
+      <h3>{service.title}</h3>
+      <p>{service.description}</p>
+      <Link to={service.route} className={styles.learnMoreLink}>
+        <span>Learn More</span>
+        <FiArrowRight aria-hidden="true" />
+      </Link>
+    </article>
+  )
+})
+CoreServiceCard.displayName = 'CoreServiceCard'
+
+const WhyChooseCard = React.memo(({ item }) => {
+  const Icon = item.icon
+  return (
+    <div className={styles.whyCard}>
+      <div className={styles.iconBox} aria-hidden="true">
+        <Icon />
+      </div>
+      <h3>{item.title}</h3>
+      <p>{item.description}</p>
+    </div>
+  )
+})
+WhyChooseCard.displayName = 'WhyChooseCard'
+
+/* ==========================================================================
    Services Component
    ========================================================================== */
 export function Services() {
@@ -220,9 +250,9 @@ export function Services() {
   }
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${`${styles.page}`}`}>
       {/* SECTION 1: SERVICES HERO */}
-      <section className={styles.hero} aria-labelledby="services-hero-title">
+      <section className={`reveal-trigger ${styles.hero}`} aria-labelledby="services-hero-title">
         <Container>
           <div className={styles.heroContent}>
             <span className={styles.badge}>Our Services</span>
@@ -245,7 +275,7 @@ export function Services() {
       </section>
 
       {/* SECTION 2: SERVICES INTRODUCTION */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="intro-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="intro-title">
         <Container>
           <div className={styles.introContent}>
             <div className={styles.introLeft}>
@@ -278,7 +308,7 @@ export function Services() {
       </section>
 
       {/* SECTION 3: CORE SERVICES GRID */}
-      <section className={styles.section} id="core-services" aria-labelledby="core-services-title">
+      <section className={`reveal-trigger ${styles.section}`} id="core-services" aria-labelledby="core-services-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -288,28 +318,15 @@ export function Services() {
             />
           </div>
           <div className={styles.grid3}>
-            {coreServices.map((service) => {
-              const Icon = service.icon
-              return (
-                <article className={styles.card} key={service.title}>
-                  <div className={styles.iconBox} aria-hidden="true">
-                    <Icon />
-                  </div>
-                  <h3>{service.title}</h3>
-                  <p>{service.description}</p>
-                  <Link to={service.route} className={styles.learnMoreLink}>
-                    <span>Learn More</span>
-                    <FiArrowRight aria-hidden="true" />
-                  </Link>
-                </article>
-              )
-            })}
+            {coreServices.map((service) => (
+              <CoreServiceCard key={service.title} service={service} />
+            ))}
           </div>
         </Container>
       </section>
 
       {/* SECTION 4: WHY CHOOSE DIGITAL SPHERE */}
-      <section className={`${styles.section} ${styles.whyChooseSection}`} aria-labelledby="why-choose-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.whyChooseSection}`} aria-labelledby="why-choose-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -319,24 +336,15 @@ export function Services() {
             />
           </div>
           <div className={styles.grid3}>
-            {whyChooseUs.map((item) => {
-              const Icon = item.icon
-              return (
-                <div className={styles.whyCard} key={item.title}>
-                  <div className={styles.iconBox} aria-hidden="true">
-                    <Icon />
-                  </div>
-                  <h3>{item.title}</h3>
-                  <p>{item.description}</p>
-                </div>
-              )
-            })}
+            {whyChooseUs.map((item) => (
+              <WhyChooseCard key={item.title} item={item} />
+            ))}
           </div>
         </Container>
       </section>
 
       {/* SECTION 5: OUR WORKING PROCESS */}
-      <section className={styles.section} aria-labelledby="process-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="process-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -360,7 +368,7 @@ export function Services() {
       </section>
 
       {/* SECTION 6: TECHNOLOGIES & TOOLS */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="tech-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="tech-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -387,7 +395,7 @@ export function Services() {
       </section>
 
       {/* SECTION 7: INDUSTRIES WE SERVE */}
-      <section className={styles.section} aria-labelledby="industries-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="industries-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -416,7 +424,7 @@ export function Services() {
       </section>
 
       {/* SECTION 8: FAQ SECTION */}
-      <section className={`${styles.section} ${styles.faqSection}`} aria-labelledby="faq-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.faqSection}`} aria-labelledby="faq-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -461,7 +469,7 @@ export function Services() {
       </section>
 
       {/* SECTION 9: FINAL CTA */}
-      <section className={styles.section} aria-label="CTA">
+      <section className={`reveal-trigger ${styles.section}`} aria-label="CTA">
         <Container>
           <div className={styles.ctaCard}>
             <h2>Ready To Grow Your Business Digitally?</h2>

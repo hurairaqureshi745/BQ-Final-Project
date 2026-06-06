@@ -1,0 +1,33 @@
+.emptyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl) var(--space-xl);
+  text-align: center;
+  background: rgba(17, 24, 39, 0.4);
+  border: 1px dashed rgba(6, 182, 212, 0.3);
+  border-radius: var(--radius-lg);
+  margin: var(--space-xl) 0;
+  backdrop-filter: blur(10px);
+}
+
+.icon {
+  font-size: 3rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-md);
+  opacity: 0.5;
+}
+
+.title {
+  font-size: var(--fs-h3);
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
+  font-weight: 700;
+}
+
+.message {
+  font-size: var(--fs-body);
+  color: var(--color-text-muted);
+  max-width: 400px;
+}

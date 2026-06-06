@@ -6,7 +6,6 @@
   border: 1px solid var(--color-border);
   padding: var(--space-md);
   border-radius: var(--radius-md);
-  backdrop-filter: blur(10px);
   margin-top: var(--space-lg);
 }
 

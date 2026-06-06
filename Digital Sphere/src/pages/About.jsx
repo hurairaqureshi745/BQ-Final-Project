@@ -1,8 +1,5 @@
 import { Link } from 'react-router-dom'
 import {
-  FiLinkedin,
-  FiGithub,
-  FiDribbble,
   FiCpu,
   FiAward,
   FiEye,
@@ -273,9 +270,9 @@ export function About() {
   useDocumentTitle('About | Digital Sphere')
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${`${styles.page}`}`}>
       {/* SECTION 1: ABOUT HERO */}
-      <section className={styles.hero} aria-labelledby="about-hero-title">
+      <section className={`reveal-trigger ${styles.hero}`} aria-labelledby="about-hero-title">
         <Container>
           <div className={styles.heroContent}>
             <span className={styles.badge}>About Digital Sphere</span>
@@ -298,7 +295,7 @@ export function About() {
       </section>
 
       {/* SECTION 2: OUR STORY */}
-      <section className={`${styles.section} ${styles.storySection}`} aria-labelledby="story-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.storySection}`} aria-labelledby="story-title">
         <Container>
           <div className={styles.storyContent}>
             <div className={styles.storyLeft}>
@@ -328,7 +325,7 @@ export function About() {
       </section>
 
       {/* SECTION 3 (NEW): FOUNDER MESSAGE */}
-      <section className={`${styles.section} ${styles.founderSection}`} aria-labelledby="founder-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.founderSection}`} aria-labelledby="founder-title">
         <Container>
           <div className={styles.founderContent}>
             <div className={styles.founderLeft}>
@@ -357,7 +354,7 @@ export function About() {
       </section>
 
       {/* SECTION 4: MISSION & VISION */}
-      <section className={styles.section} aria-label="Mission and Vision">
+      <section className={`reveal-trigger ${styles.section}`} aria-label="Mission and Vision">
         <Container>
           <div className={styles.missionGrid}>
             <div className={`${styles.mvCard} ${styles.missionCard}`}>
@@ -377,7 +374,7 @@ export function About() {
       </section>
 
       {/* SECTION 5 (NEW): OUR PHILOSOPHY */}
-      <section className={styles.section} aria-labelledby="philosophy-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="philosophy-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -404,7 +401,7 @@ export function About() {
       </section>
 
       {/* SECTION 6: CORE VALUES */}
-      <section className={styles.section} aria-labelledby="values-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="values-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -431,7 +428,7 @@ export function About() {
       </section>
 
       {/* SECTION 7 (NEW): HOW WE WORK */}
-      <section className={styles.section} aria-labelledby="how-we-work-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="how-we-work-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -455,7 +452,7 @@ export function About() {
       </section>
 
       {/* SECTION 8: JOURNEY TIMELINE */}
-      <section className={styles.section} aria-labelledby="timeline-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="timeline-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -487,7 +484,7 @@ export function About() {
       </section>
 
       {/* SECTION 9 (NEW): FUTURE ROADMAP */}
-      <section className={styles.section} aria-labelledby="roadmap-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="roadmap-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -519,7 +516,7 @@ export function About() {
       </section>
 
       {/* SECTION 10: WHY BUSINESSES CHOOSE US */}
-      <section className={`${styles.section} ${styles.whyChooseSection}`} aria-labelledby="why-choose-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.whyChooseSection}`} aria-labelledby="why-choose-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -546,7 +543,7 @@ export function About() {
       </section>
 
       {/* SECTION 11 (NEW): INDUSTRY FOCUS */}
-      <section className={`${styles.section} ${styles.industrySection}`} aria-labelledby="industry-focus-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.industrySection}`} aria-labelledby="industry-focus-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -573,7 +570,7 @@ export function About() {
       </section>
 
       {/* SECTION 12: MEET THE TEAM */}
-      <section className={styles.section} aria-labelledby="team-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="team-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -584,30 +581,17 @@ export function About() {
           </div>
           <div className={styles.teamGrid}>
             {teamMembers.map((member) => (
-              <article className={styles.teamCard} key={member.name}>
+              <article className={`reveal-trigger ${styles.teamCard}`} key={member.name}>
                 <div className={styles.avatar} aria-hidden="true">
-                  {member.initials}
+                  {member.image ? (
+                    <img src={member.image} alt={member.name} loading="lazy" className={styles.teamImage} />
+                  ) : (
+                    member.initials
+                  )}
                 </div>
                 <h3>{member.name}</h3>
                 <p className={styles.role}>{member.role}</p>
                 <p className={styles.bio}>{member.bio}</p>
-                <ul className={styles.socials} aria-label={`${member.name} social links`}>
-                  <li>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-                      <FiLinkedin />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-                      <FiGithub />
-                    </a>
-                  </li>
-                  <li>
-                    <a href="https://dribbble.com" target="_blank" rel="noopener noreferrer" aria-label="Dribbble">
-                      <FiDribbble />
-                    </a>
-                  </li>
-                </ul>
               </article>
             ))}
           </div>
@@ -615,7 +599,7 @@ export function About() {
       </section>
 
       {/* SECTION 13: OUR PROCESS */}
-      <section className={`${styles.section} ${styles.processSection}`} aria-labelledby="process-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.processSection}`} aria-labelledby="process-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -639,7 +623,7 @@ export function About() {
       </section>
 
       {/* SECTION 14 (NEW): LONG-TERM VISION */}
-      <section className={`${styles.section} ${styles.visionSection}`} aria-labelledby="long-term-vision-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.visionSection}`} aria-labelledby="long-term-vision-title">
         <Container>
           <div className={styles.visionContent}>
             <div className={styles.visionLeft}>
@@ -663,7 +647,7 @@ export function About() {
       </section>
 
       {/* SECTION 15 (NEW): COMMUNITY IMPACT */}
-      <section className={`${styles.section} ${styles.communitySection}`} aria-labelledby="community-impact-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.communitySection}`} aria-labelledby="community-impact-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -693,7 +677,7 @@ export function About() {
       </section>
 
       {/* SECTION 16: STATISTICS */}
-      <section className={styles.section} aria-labelledby="stats-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="stats-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -714,7 +698,7 @@ export function About() {
       </section>
 
       {/* SECTION 17: FINAL CTA */}
-      <section className={`${styles.section} ${styles.ctaSection}`} aria-label="CTA">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.ctaSection}`} aria-label="CTA">
         <Container>
           <div className={styles.ctaCard}>
             <h2>Let's Build Something Amazing Together</h2>

@@ -78,17 +78,35 @@
   background: var(--gradient-primary);
   color: var(--color-text);
   box-shadow: var(--shadow-primary);
+  transition: transform 220ms ease-out;
 }
 
-.primaryButton:hover,
-.secondaryButton:hover {
+.primaryButton:hover {
   color: var(--color-text);
+  transform: translateY(-2px) scale(1.02);
+  
+}
+
+.primaryButton:active {
+  transform: translateY(0) scale(0.98);
+  
 }
 
 .secondaryButton {
   border: 1px solid var(--color-border);
   background: rgba(17, 24, 39, 0.72);
   color: var(--color-text);
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
+}
+
+.secondaryButton:hover {
+  color: var(--color-text);
+  transform: translateY(-2px);
+
+}
+
+.secondaryButton:active {
+  transform: translateY(0);
 }
 
 .trustList {
@@ -123,7 +141,6 @@
     linear-gradient(145deg, rgba(31, 41, 55, 0.74), rgba(17, 24, 39, 0.44)),
     rgba(17, 24, 39, 0.64);
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(18px);
 }
 
 .glowCircle {
@@ -145,7 +162,6 @@
   border-radius: var(--radius-md);
   background: rgba(11, 15, 25, 0.66);
   box-shadow: var(--shadow-card);
-  backdrop-filter: blur(18px);
 }
 
 .visualCard {

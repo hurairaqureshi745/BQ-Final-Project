@@ -1,36 +1,7 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import {
-  FiCheck,
-  FiChevronDown,
-  FiMail,
-  FiPhone,
-  FiMapPin,
-  FiCpu,
-  FiAward,
-  FiShield,
-  FiTrendingUp,
-  FiSliders,
-  FiMessageSquare,
-  FiActivity,
-  FiShoppingBag,
-  FiBriefcase,
-  FiLayers,
-  FiGlobe,
-  FiMonitor,
-  FiLayout,
-  FiSmartphone,
-  FiArrowRight,
-  FiHeart,
-  FiUsers,
-  FiBookOpen,
-  FiCompass,
-  FiSend,
-  FiTarget,
-  FiInstagram,
-  FiFacebook,
-  FiLinkedin
-} from 'react-icons/fi'
+import { AnimatedStat } from '../components/common/AnimatedStat'
+import { FiCheck, FiChevronDown, FiMail, FiPhone, FiMapPin, FiAward, FiShield, FiTrendingUp, FiMessageSquare, FiActivity, FiGlobe, FiUsers, FiBookOpen, FiCompass, FiTarget, FiInstagram, FiFacebook, FiLinkedin } from 'react-icons/fi'
 import { Container } from '../components/common/Container'
 import { SectionHeader } from '../components/common/SectionHeader'
 import { useDocumentTitle } from '../hooks/useDocumentTitle'
@@ -334,9 +305,9 @@ export function DigitalMarketingService() {
   }
 
   return (
-    <article className={styles.page}>
+    <article className={`reveal-trigger ${styles.page}`}>
       {/* SECTION 1: SERVICE HERO */}
-      <section className={styles.hero} aria-labelledby="service-hero-title">
+      <section className={`reveal-trigger ${styles.hero}`} aria-labelledby="service-hero-title">
         <Container>
           <div className={styles.heroContent}>
             <span className={styles.badge}>Digital Marketing</span>
@@ -359,7 +330,7 @@ export function DigitalMarketingService() {
           <div className={styles.heroStats}>
             {stats.map((stat) => (
               <div className={styles.heroStatCard} key={stat.label}>
-                <strong>{stat.value}</strong>
+                <AnimatedStat value={stat.value} />
                 <span>{stat.label}</span>
               </div>
             ))}
@@ -368,7 +339,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 2: WHAT IS DIGITAL MARKETING */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="intro-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="intro-title">
         <Container>
           <div className={styles.introContent}>
             <div className={styles.introLeft}>
@@ -401,7 +372,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 3: WHY DIGITAL MARKETING MATTERS */}
-      <section className={styles.section} aria-labelledby="benefits-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="benefits-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -428,7 +399,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 4: DIGITAL MARKETING SERVICES WE OFFER */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="services-offer-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="services-offer-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -461,7 +432,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 5: MARKETING CHANNELS WE USE */}
-      <section className={styles.section} aria-labelledby="channels-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="channels-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -496,7 +467,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 6: OUR MARKETING PROCESS */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="process-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="process-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -520,7 +491,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 7: WHY CHOOSE DIGITAL SPHERE */}
-      <section className={styles.section} aria-labelledby="choose-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="choose-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -547,7 +518,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 8: SOLUTION PACKAGES */}
-      <section className={`${styles.section} ${styles.introSection}`} aria-labelledby="packages-title">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.introSection}`} aria-labelledby="packages-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -590,7 +561,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 9: FAQ SECTION */}
-      <section className={styles.section} aria-labelledby="faq-title">
+      <section className={`reveal-trigger ${styles.section}`} aria-labelledby="faq-title">
         <Container>
           <div className={styles.sectionHeader}>
             <SectionHeader
@@ -635,7 +606,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 10: FINAL CTA */}
-      <section className={`${styles.section} ${styles.ctaSection}`} aria-label="CTA">
+      <section className={`reveal-trigger ${`${styles.section}`} ${styles.ctaSection}`} aria-label="CTA">
         <Container>
           <div className={styles.ctaCard}>
             <h2>Ready To Grow Your Business Online?</h2>
@@ -655,7 +626,7 @@ export function DigitalMarketingService() {
       </section>
 
       {/* SECTION 11: CONTACT FORM */}
-      <section className={styles.section} id="discuss-goals" aria-labelledby="form-heading">
+      <section className={`reveal-trigger ${styles.section}`} id="discuss-goals" aria-labelledby="form-heading">
         <Container>
           <div className={styles.contactLayout}>
             <div className={styles.contactFormCard}>

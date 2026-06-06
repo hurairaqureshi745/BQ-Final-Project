@@ -1,20 +1,26 @@
 import { useState } from 'react'
+import { Spinner } from '../common/Spinner'
 import styles from './NewsletterCTA.module.css'
 
 export function NewsletterCTA() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (email.trim() && email.includes('@')) {
-      setSubmitted(true)
-      setEmail('')
+      setIsLoading(true)
+      setTimeout(() => {
+        setIsLoading(false)
+        setSubmitted(true)
+        setEmail('')
+      }, 1200)
     }
   }
 
   return (
-    <section className={styles.section} id="subscribe" aria-labelledby="newsletter-heading">
+    <section className={`reveal-trigger ${styles.section}`} id="subscribe" aria-labelledby="newsletter-heading">
       <div className={styles.card}>
         <div className={styles.content}>
           <h2 id="newsletter-heading" className={styles.heading}>
@@ -41,8 +47,8 @@ export function NewsletterCTA() {
                 required
                 aria-label="Email address for newsletter"
               />
-              <button type="submit" className={styles.btn}>
-                Subscribe
+              <button type="submit" className={styles.btn} disabled={isLoading}>
+                {isLoading ? <Spinner size="small" /> : 'Subscribe'}
               </button>
             </form>
           )}

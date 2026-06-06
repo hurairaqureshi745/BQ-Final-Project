@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import { FiClock, FiArrowLeft, FiUser, FiChevronDown } from 'react-icons/fi'
+import { FiClock, FiArrowLeft, FiChevronDown } from 'react-icons/fi'
 import { Container } from '../../components/common/Container'
 import { useDocumentTitle } from '../../hooks/useDocumentTitle'
 import { blogData } from '../../data/blogData'

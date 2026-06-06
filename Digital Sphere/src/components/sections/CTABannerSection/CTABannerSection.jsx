@@ -4,7 +4,7 @@ import styles from './CTABannerSection.module.css'
 
 export function CTABannerSection() {
   return (
-    <section className={styles.section} aria-labelledby="cta-banner-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="cta-banner-title">
       <Container className={styles.container}>
         <div className={styles.banner}>
           <p className={styles.badge}>Let's Build Something Great</p>

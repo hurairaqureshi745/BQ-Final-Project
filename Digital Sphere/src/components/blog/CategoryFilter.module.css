@@ -20,14 +20,14 @@
   font-size: var(--fs-small);
   border-radius: var(--radius-md);
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: transform 200ms ease, color 200ms ease, opacity 200ms ease;
   white-space: nowrap;
 }
 
 .pill:hover {
-  background: rgba(255, 255, 255, 0.06);
+  
   color: var(--color-text);
-  border-color: var(--color-text-muted);
+  
 }
 
 .pillActive {

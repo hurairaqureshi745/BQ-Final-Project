@@ -23,7 +23,7 @@ export function RelatedPosts({ currentArticle }) {
   if (related.length === 0) return null
 
   return (
-    <section className={styles.section} aria-labelledby="related-posts-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="related-posts-title">
       <h2 id="related-posts-title" className={styles.title}>
         Related <span>Articles</span>
       </h2>

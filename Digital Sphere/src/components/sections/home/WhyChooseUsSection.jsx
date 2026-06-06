@@ -33,7 +33,7 @@ const stats = [
 
 export function WhyChooseUsSection() {
   return (
-    <section className={styles.section} aria-labelledby="why-choose-us-title">
+    <section className={`reveal-trigger ${styles.section}`} aria-labelledby="why-choose-us-title">
       <div className={styles.container}>
         <div className={styles.content}>
           <p className={styles.badge}>Why Choose Us</p>
@@ -58,7 +58,7 @@ export function WhyChooseUsSection() {
             const Icon = benefit.icon
 
             return (
-              <article className={styles.benefitCard} key={benefit.title}>
+              <article className={`reveal-trigger ${styles.benefitCard}`} key={benefit.title}>
                 <div className={styles.iconBox} aria-hidden="true">
                   <Icon />
                 </div>
